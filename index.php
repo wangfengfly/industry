@@ -6,9 +6,9 @@
  *---------------------------------------------------------------
  */
 
-require("/application/libraries/dotenv/src/Dotenv.php");
-require("/application/libraries/dotenv/src/Loader.php");
-require("/application/libraries/dotenv/src/Validator.php");
+require("application/libraries/dotenv/src/Dotenv.php");
+require("application/libraries/dotenv/src/Loader.php");
+require("application/libraries/dotenv/src/Validator.php");
 
 $dotenv = new Dotenv\Dotenv(__DIR__);
 
@@ -36,7 +36,7 @@ try {
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+	define('ENVIRONMENT', 'production');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

@@ -53,7 +53,7 @@ $db['iscaffold']['username'] = $_ENV['DB_USER'];
 $db['iscaffold']['password'] = $_ENV['DB_PASS'];
 $db['iscaffold']['database'] = $_ENV['DB_NAME'];
 
-$db['iscaffold']['dbdriver'] = 'mysql';
+$db['iscaffold']['dbdriver'] = 'mysqli';
 $db['iscaffold']['dbprefix'] = '';
 $db['iscaffold']['pconnect'] = TRUE;
 $db['iscaffold']['db_debug'] = TRUE;
