@@ -40,6 +40,7 @@ class Tools extends CI_Controller{
                         $data = array('name'=>$key);
                         $this->db->insert($tablename, $data);
                         if($this->db->affected_rows() != 1){
+                            $this->db->truncate($tablename);
                             exit('insert fail.please retry!');
                         }
                         $parentid = $this->db->insert_id();
@@ -48,6 +49,7 @@ class Tools extends CI_Controller{
                         $data = array('name'=>$second_key, 'parentid'=>$parentid);
                         $this->db->insert($tablename, $data);
                         if($this->db->affected_rows() != 1){
+                            $this->db->truncate($tablename);
                             exit('insert fail.please retry!');
                         }
                         $secondid = $this->db->insert_id();
@@ -55,6 +57,7 @@ class Tools extends CI_Controller{
                             $data = array('name'=>trim($strs[$i]), 'parentid'=>$secondid);
                             $this->db->insert($tablename, $data);
                             if($this->db->affected_rows() != 1){
+                                $this->db->truncate($tablename);
                                 exit('insert fail.please retry!');
                             }
                         }
@@ -89,6 +92,7 @@ class Tools extends CI_Controller{
                         $data = array('province'=>$province, 'city'=>$city);
                         $this->db->insert($tablename, $data);
                         if($this->db->affected_rows() != 1){
+                            $this->db->truncate($tablename);
                             exit('insert fail.please retry! sql:'.$this->db->last_query());
                         }
                     }
@@ -98,11 +102,45 @@ class Tools extends CI_Controller{
                     $data = array('province'=>$province, 'city'=>$city);
                     $this->db->insert($tablename, $data);
                     if($this->db->affected_rows() != 1){
+                        $this->db->truncate($tablename);
                         exit('insert fail.please retry! sql:'.$this->db->last_query());
                     }
                 }
             }
         }
+    }
+
+    /**
+     *
+     */
+    public function importProjects(){
+        $tablename = 'projects';
+        $contents = file_get_contents($this->file);
+        if($contents){
+            $this->load->model( 'model_projects' );
+            $contents = explode("\n", $contents);
+            foreach($contents as $line){
+                $strs = explode("\t", $line);
+                if(count($strs) == 16){
+                    //标签中文分隔符改为英文
+                    $tags = explode('，', $strs[13]);
+                    $tags = implode(',', $tags);
+                    $xmxz = trim($strs[14]);
+                    $xmxz = isset(Model_projects::XMXZ_ARR[$xmxz]) ? Model_projects::XMXZ_ARR[$xmxz] : 0;
+                    $data = array('name'=>$strs[1], 'jsdw'=>$strs[4], 'tzztxz'=>$strs[7],
+                        'tze'=>$strs[8], 'jsnr'=>$strs[9], 'jjzb'=>$strs[10], 'jssj1'=>intval($strs[11]),
+                        'jssj2'=>intval($strs[12]), 'tags'=>$tags, 'xmxz'=>$xmxz, 'ssyq'=>0);
+                    $this->db->insert($tablename, $data);
+                    if($this->db->affected_rows() != 1){
+                        $this->db->truncate($tablename);
+                        exit('insert fail.please retry! sql:'.$this->db->last_query());
+                    }
+                }
+
+            }
+            exit("Done!!");
+        }
+        echo "file content empty!";
     }
 
 }

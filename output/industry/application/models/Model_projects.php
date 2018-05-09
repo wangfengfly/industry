@@ -2,6 +2,12 @@
 
 class Model_projects extends CI_Model 
 {
+	const XMXZ_UNKNOWN = 0; //未知
+	const XMXZ_NEW = 1; //新建
+	const XMXZ_ADD = 2; //改扩建
+	const XMXZ_RONG = 3; //融资
+	const XMXZ_ARR = array('新建'=>self::XMXZ_NEW, '改扩建'=>self::XMXZ_ADD, '融资'=>self::XMXZ_RONG);
+
     function __construct()
     {
         parent::__construct();
