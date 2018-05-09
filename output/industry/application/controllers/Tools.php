@@ -23,7 +23,7 @@ class Tools extends CI_Controller{
     }
 
     /**
-     *
+     * 导入行业数据
      */
     public function importHangye(){
         $tablename = 'industry';
@@ -63,6 +63,42 @@ class Tools extends CI_Controller{
                             $data = array('name'=>trim($strs[$i]), 'parentid'=>$parentid);
                             $this->db->insert($tablename, $data);
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 导入地区数据
+     */
+    public function importArea(){
+        $tablename = 'area';
+        $contents = file_get_contents($this->file);
+        $contents = json_decode($contents, true);
+        foreach($contents as $code=>$item){
+            $name = $item['name'];
+            $child = $item['child'];
+            foreach($child as $_code=>$_item){
+                $_name = $_item['name'];
+                if($_name == '市辖区' || $_name=='县'){
+                    $__child = $_item['child'];
+                    foreach($__child as $__code=>$__item){
+                        $province = $name;
+                        $city = $__item;
+                        $data = array('province'=>$province, 'city'=>$city);
+                        $this->db->insert($tablename, $data);
+                        if($this->db->affected_rows() != 1){
+                            exit('insert fail.please retry! sql:'.$this->db->last_query());
+                        }
+                    }
+                }else{
+                    $province = $name;
+                    $city = $_name;
+                    $data = array('province'=>$province, 'city'=>$city);
+                    $this->db->insert($tablename, $data);
+                    if($this->db->affected_rows() != 1){
+                        exit('insert fail.please retry! sql:'.$this->db->last_query());
                     }
                 }
             }
