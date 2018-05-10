@@ -105,6 +105,15 @@ class Model_industry extends CI_Model
         return $industry_map;
     }
 
+    public function getall2name(){
+        $industry_map = $this->getall();
+        $data = array();
+        foreach($industry_map as $id=>$item){
+            $data[$id] = $item['name'];
+        }
+        return $data;
+    }
+
 
 
 	function lister ( $page = FALSE )

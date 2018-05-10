@@ -24,6 +24,25 @@ class Model_area extends CI_Model
         $this->raw_data = FALSE;  
     }
 
+    public function getall(){
+        $areas = $this->db->get('area')->result_array();
+        $area_map = array();
+        foreach($areas as $area){
+            $id = intval($area['id']);
+            $area_map[$id] = $area;
+        }
+        return $area_map;
+    }
+
+    public function getall2name(){
+        $area_map = $this->getall();
+        $data = array();
+        foreach($area_map as $id=>&$item){
+            $data[$id] = $item['province'].$item['city'];
+        }
+        return $data;
+    }
+
 	function get ( $id, $get_one = false )
 	{
         

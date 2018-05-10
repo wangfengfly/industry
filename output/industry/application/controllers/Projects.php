@@ -8,7 +8,7 @@ class Projects extends CI_Controller
 
 		$this->load->library( 'template' ); 
 		$this->load->model( 'model_projects' ); 
-		
+		$this->load->model('model_industry');
 		$this->load->helper( 'form' );
 		$this->load->helper( 'language' ); 
 		$this->load->helper( 'url' );
@@ -81,7 +81,16 @@ class Projects extends CI_Controller
                 $fields = $this->model_projects->fields();
 				//项目性质
 				$this->template->assign('xmxz_options', Model_projects::XMXZ_ARR2);
-                
+
+				//所属行业
+				$sshy_options = array(0=>'其他');
+				$sshy_options = array_merge($sshy_options, $this->model_industry->getall2name());
+				$this->template->assign('sshy_options', $sshy_options);
+				//建设地点
+				$this->load->model('model_area');
+				$jsdd_options = array(0=>'全国');
+				$jsdd_options = array_merge($jsdd_options, $this->model_area->getall2name());
+				$this->template->assign('jsdd_options', $jsdd_options);
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'projects_fields', $fields );
@@ -173,6 +182,16 @@ class Projects extends CI_Controller
                 $fields = $this->model_projects->fields();
                 //项目性质
 				$this->template->assign('xmxz_options', Model_projects::XMXZ_ARR2);
+				//所属行业
+				$sshy_options = array(0=>'其他');
+				$sshy_options = array_merge($sshy_options, $this->model_industry->getall2name());
+				$this->template->assign('sshy_options', $sshy_options);
+				//建设地点
+				$this->load->model('model_area');
+				$jsdd_options = array(0=>'全国');
+				$jsdd_options = array_merge($jsdd_options, $this->model_area->getall2name());
+				$this->template->assign('jsdd_options', $jsdd_options);
+
                 
           		$this->template->assign( 'action_mode', 'edit' );
         		$this->template->assign( 'projects_data', $data );

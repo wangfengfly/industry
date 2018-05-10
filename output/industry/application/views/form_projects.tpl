@@ -36,7 +36,11 @@
     	<div class="group">
             <label class="label">{$projects_fields.sshy1}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($projects_data)}{$projects_data.sshy1}{/if}" name="sshy1" />
+				{if isset($projects_data)}
+					{html_options name=sshy1 options=$sshy_options selected=$projects_data.sshy1}
+				{else}
+					{html_options name=sshy1 options=$sshy_options selected=0}
+				{/if}
     		</div>
     		
     	</div>
@@ -44,7 +48,11 @@
     	<div class="group">
             <label class="label">{$projects_fields.sshy2}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($projects_data)}{$projects_data.sshy2}{/if}" name="sshy2" />
+				{if isset($projects_data)}
+					{html_options name=sshy2 options=$sshy_options selected=$projects_data.sshy2}
+				{else}
+					{html_options name=sshy2 options=$sshy_options selected=0}
+				{/if}
     		</div>
     		
     	</div>
@@ -60,7 +68,11 @@
     	<div class="group">
             <label class="label">{$projects_fields.jsdd}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($projects_data)}{$projects_data.jsdd}{/if}" name="jsdd" />
+				{if isset($projects_data)}
+					{html_options name=jsdd options=$jsdd_options selected=$projects_data.jsdd}
+				{else}
+					{html_options name=jsdd options=$jsdd_options selected=0}
+				{/if}
     		</div>
     		
     	</div>
