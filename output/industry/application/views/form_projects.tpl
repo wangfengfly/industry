@@ -124,7 +124,11 @@
     	<div class="group">
             <label class="label">{$projects_fields.xmxz}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($projects_data)}{$projects_data.xmxz}{/if}" name="xmxz" />
+				{if isset($projects_data)}
+					{html_options name=xmxz options=$xmxz_options selected=$projects_data.xmxz}
+				{else}
+					{html_options name=xmxz options=$xmxz_options selected=0}
+				{/if}
     		</div>
     		
     	</div>

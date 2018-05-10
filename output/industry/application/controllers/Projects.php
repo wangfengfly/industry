@@ -30,6 +30,10 @@ class Projects extends CI_Controller
         $this->model_projects->pagination( TRUE );
 		$data_info = $this->model_projects->lister( $page );
         $fields = $this->model_projects->fields( TRUE );
+		//项目性质
+		foreach($data_info as &$item){
+			$item['xmxz'] = Model_projects::XMXZ_ARR2[intval($item['xmxz'])];
+		}
         
 
         $this->template->assign( 'pager', $this->model_projects->pager );
@@ -50,7 +54,8 @@ class Projects extends CI_Controller
     {
 		$data = $this->model_projects->get( $id );
         $fields = $this->model_projects->fields( TRUE );
-        
+        //项目性质
+		$data['xmxz'] = Model_projects::XMXZ_ARR2[intval($data['xmxz'])];
 
         
         $this->template->assign( 'id', $id );
@@ -74,7 +79,8 @@ class Projects extends CI_Controller
         {
             case 'GET':
                 $fields = $this->model_projects->fields();
-                
+				//项目性质
+				$this->template->assign('xmxz_options', Model_projects::XMXZ_ARR2);
                 
                 
                 $this->template->assign( 'action_mode', 'create' );
@@ -165,9 +171,8 @@ class Projects extends CI_Controller
                 $this->model_projects->raw_data = TRUE;
         		$data = $this->model_projects->get( $id );
                 $fields = $this->model_projects->fields();
-                
-                
-                
+                //项目性质
+				$this->template->assign('xmxz_options', Model_projects::XMXZ_ARR2);
                 
           		$this->template->assign( 'action_mode', 'edit' );
         		$this->template->assign( 'projects_data', $data );
