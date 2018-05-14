@@ -58,6 +58,7 @@
                   <ul class="navigation">
                     <ul id="top_menu">						<li{if isset($table_name)}{if $table_name == 'Area'} class='active'{/if}{/if}><a href='area'>Area</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Industry'} class='active'{/if}{/if}><a href='industry'>Industry</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Park'} class='active'{/if}{/if}><a href='park'>Park</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Projects'} class='active'{/if}{/if}><a href='projects'>Projects</a></li>
 					</ul>
                   </ul>
