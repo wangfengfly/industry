@@ -13,6 +13,7 @@ class City extends CI_Controller
 		$this->load->helper( 'language' ); 
 		$this->load->helper( 'url' );
         $this->load->model( 'model_auth' );
+        $this->load->model('model_province');
 
         $this->logged_in = $this->model_auth->check( TRUE );
         $this->template->assign( 'logged_in', $this->logged_in );
@@ -30,7 +31,16 @@ class City extends CI_Controller
         $this->model_city->pagination( TRUE );
 		$data_info = $this->model_city->lister( $page );
         $fields = $this->model_city->fields( TRUE );
-        
+
+        $provinces = $this->model_province->getall2name();
+        foreach($data_info as &$item){
+            $pid = $item['pid'];
+            if(isset($provinces[$pid])){
+                $item['pid'] = $provinces[$pid];
+            }else{
+                $item['pid'] = '全国';
+            }
+        }
 
         $this->template->assign( 'pager', $this->model_city->pager );
 		$this->template->assign( 'city_fields', $fields );
@@ -50,8 +60,13 @@ class City extends CI_Controller
     {
 		$data = $this->model_city->get( $id );
         $fields = $this->model_city->fields( TRUE );
-        
 
+        $province = $this->model_province->get($data['pid']);
+        if($province && isset($province['name'])){
+            $data['pid'] = $province['name'];
+        }else{
+            $data['pid'] = '全国';
+        }
         
         $this->template->assign( 'id', $id );
 		$this->template->assign( 'city_fields', $fields );
@@ -75,8 +90,9 @@ class City extends CI_Controller
             case 'GET':
                 $fields = $this->model_city->fields();
                 
-                
-                
+                $provinces = $this->model_province->getall2name();
+
+                $this->template->assign('provinces', $provinces);
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'city_fields', $fields );
                 $this->template->assign( 'metadata', $this->model_city->metadata() );
@@ -141,8 +157,9 @@ class City extends CI_Controller
                 $this->model_city->raw_data = TRUE;
         		$data = $this->model_city->get( $id );
                 $fields = $this->model_city->fields();
-                
-                
+
+                $provinces = $this->model_province->getall2name();
+                $this->template->assign('provinces', $provinces);
                 
                 
           		$this->template->assign( 'action_mode', 'edit' );

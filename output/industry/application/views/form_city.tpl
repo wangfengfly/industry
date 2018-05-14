@@ -36,7 +36,11 @@
     	<div class="group">
             <label class="label">{$city_fields.pid}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($city_data)}{$city_data.pid}{/if}" name="pid" />
+                {if isset($city_data)}
+                    {html_options name=pid options=$provinces selected=$city_data.pid}
+                {else}
+                    {html_options name=pid options=$provinces selected=0}
+                {/if}
     		</div>
     		
     	</div>

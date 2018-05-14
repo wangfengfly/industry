@@ -24,6 +24,26 @@ class Model_province extends CI_Model
         $this->raw_data = FALSE;  
     }
 
+    public function getall(){
+        $provs = $this->db->get('province')->result_array();
+        $prov_map = array();
+        foreach($provs as $prov){
+            $id = intval($prov['id']);
+            $prov_map[$id] = $prov;
+        }
+        return $prov_map;
+    }
+
+    public function getall2name(){
+        $prov_map = $this->getall();
+        $data = array();
+        $data[0] = '全国';
+        foreach($prov_map as $id=>&$item){
+            $data[$id] = $item['name'];
+        }
+        return $data;
+    }
+
 	function get ( $id, $get_one = false )
 	{
         
