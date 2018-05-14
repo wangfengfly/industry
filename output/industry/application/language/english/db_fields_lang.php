@@ -3,18 +3,18 @@
 /*************************
 	 Table names
 *************************/
-$lang['area'] = 'Area';
+$lang['city'] = 'City';
 $lang['industry'] = 'Industry';
 $lang['park'] = 'Park';
 $lang['projects'] = 'Projects';
+$lang['province'] = 'Province';
 
 
 /*************************
-	 Table: Area
+	 Table: City
 *************************/
 $lang['id'] = 'id';
-$lang['province'] = '省';
-$lang['city'] = '市';
+$lang['name'] = '市';
 
 
 /*************************
@@ -64,3 +64,10 @@ $lang['jssj2'] = '建设时间——止';
 $lang['tags'] = '标签';
 $lang['xmxz'] = '项目性质';
 $lang['ssyq'] = '所属园区';
+
+
+/*************************
+	 Table: Province
+*************************/
+$lang['id'] = 'id';
+$lang['name'] = '省';
