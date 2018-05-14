@@ -27,7 +27,7 @@ class Model_city extends CI_Model
 	function get ( $id, $get_one = false )
 	{
         
-	    $select_statement = ( $this->raw_data ) ? 'pid,id,name' : 'pid,id,name';
+	    $select_statement = ( $this->raw_data ) ? 'id,name,pid' : 'id,name,pid';
 		$this->db->select( $select_statement );
 		$this->db->from('city');
         
@@ -40,7 +40,7 @@ class Model_city extends CI_Model
         }
 		else // Select the desired record
         {
-            $this->db->where( 'pid', $id );
+            $this->db->where( 'id', $id );
         }
 
 		$query = $this->db->get();
@@ -49,9 +49,9 @@ class Model_city extends CI_Model
 		{
 			$row = $query->row_array();
 			return array( 
-	'pid' => $row['pid'],
 	'id' => $row['id'],
 	'name' => $row['name'],
+	'pid' => $row['pid'],
  );
 		}
         else
@@ -72,7 +72,7 @@ class Model_city extends CI_Model
 
 	function update ( $id, $data )
 	{
-		$this->db->where( 'pid', $id );
+		$this->db->where( 'id', $id );
 		$this->db->update( 'city', $data );
 	}
 
@@ -82,11 +82,11 @@ class Model_city extends CI_Model
 	{
         if( is_array( $id ) )
         {
-            $this->db->where_in( 'pid', $id );            
+            $this->db->where_in( 'id', $id );            
         }
         else
         {
-            $this->db->where( 'pid', $id );
+            $this->db->where( 'id', $id );
         }
         $this->db->delete( 'city' );
         
@@ -98,7 +98,7 @@ class Model_city extends CI_Model
 	{
         
 	    $this->db->start_cache();
-		$this->db->select( 'pid,id,name');
+		$this->db->select( 'id,name,pid');
 		$this->db->from( 'city' );
 		//$this->db->order_by( '', 'ASC' );
         
@@ -132,9 +132,9 @@ class Model_city extends CI_Model
 		foreach ( $query->result_array() as $row )
 		{
 			$temp_result[] = array( 
-	'pid' => $row['pid'],
 	'id' => $row['id'],
 	'name' => $row['name'],
+	'pid' => $row['pid'],
  );
 		}
         $this->db->flush_cache(); 
@@ -147,7 +147,7 @@ class Model_city extends CI_Model
 	{
 	    $meta = $this->metadata();
 	    $this->db->start_cache();
-		$this->db->select( 'pid,id,name');
+		$this->db->select( 'id,name,pid');
 		$this->db->from( 'city' );
         
 
@@ -186,9 +186,9 @@ class Model_city extends CI_Model
 		foreach ( $query->result_array() as $row )
 		{
 			$temp_result[] = array( 
-	'pid' => $row['pid'],
 	'id' => $row['id'],
 	'name' => $row['name'],
+	'pid' => $row['pid'],
  );
 		}
         $this->db->flush_cache(); 
@@ -205,9 +205,9 @@ class Model_city extends CI_Model
     function fields( $withID = FALSE )
     {
         $fs = array(
-	'pid' => lang('pid'),
 	'id' => lang('id'),
-	'name' => lang('name')
+	'name' => lang('name'),
+	'pid' => lang('pid')
 );
 
         if( $withID == FALSE )

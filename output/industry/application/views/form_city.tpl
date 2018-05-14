@@ -26,17 +26,17 @@
 
                             
     	<div class="group">
-            <label class="label">{$city_fields.id}<span class="error">*</span></label>
+            <label class="label">{$city_fields.name}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($city_data)}{$city_data.id}{/if}" name="id" />
+    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($city_data)}{$city_data.name}{/if}" name="name" />
     		</div>
     		
     	</div>
     
     	<div class="group">
-            <label class="label">{$city_fields.name}<span class="error">*</span></label>
+            <label class="label">{$city_fields.pid}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($city_data)}{$city_data.name}{/if}" name="name" />
+    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($city_data)}{$city_data.pid}{/if}" name="pid" />
     		</div>
     		
     	</div>
