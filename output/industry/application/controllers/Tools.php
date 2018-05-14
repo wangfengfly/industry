@@ -143,4 +143,42 @@ class Tools extends CI_Controller{
         echo "file content empty!";
     }
 
+    public function importPark(){
+        $tablename = 'park';
+        $contents = file_get_contents($this->file);
+        if($contents){
+            $this->load->model('model_park');
+            $contents = explode("\n", $contents);
+            foreach($contents as $line){
+                $attrs = explode(',', $line);
+                if(count($attrs) == 6){
+                    if(is_numeric($attrs[0])){
+                        $create_time = str_replace('.', '', $attrs[3]);
+                        $prime_inds = explode('、', $attrs[5]);
+                        $tmp = array();
+                        for($i=0; $i<4; $i++){
+                            if(isset($prime_inds[$i])){
+                                $j = $i+1;
+                                $tmp['prime_ind'.$j] = $prime_inds[$i];
+                            }
+                        }
+                        $data = array('identifier'=>$attrs[0], 'code'=>$attrs[1], 'name'=>$attrs[2],
+                            'create_time'=>$create_time, 'area'=>$attrs[4]);
+                        if($tmp){
+                            $data = array_merge($data, $tmp);
+                        }
+                        $this->db->insert($tablename, $data);
+                        if($this->db->affected_rows() != 1){
+                            $this->db->truncate($tablename);
+                            exit('insert fail.please retry! sql:'.$this->db->last_query());
+                        }
+                    }
+                }
+            }
+            echo "import parks done.";
+            return;
+        }
+        echo "file content is empty!";
+    }
+
 }

@@ -58,7 +58,6 @@ CREATE TABLE `park` (
   `email` VARCHAR(20) not null DEFAULT '' comment '邮箱',
   `wechat` VARCHAR(50) not null DEFAULT ''comment '微信公众号',
   `companies` VARCHAR(500) not null DEFAULT '' comment '园区企业',
-  PRIMARY KEY (`id`),
-  unique key `uidx_iden`(`identifier`)
+  PRIMARY KEY (`id`)
 )ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '园区表';
 
