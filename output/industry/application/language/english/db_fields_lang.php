@@ -13,6 +13,7 @@ $lang['province'] = 'Province';
 /*************************
 	 Table: City
 *************************/
+$lang['pid'] = '省';
 $lang['id'] = 'id';
 $lang['name'] = '市';
 

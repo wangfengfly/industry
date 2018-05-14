@@ -21,6 +21,7 @@ CREATE TABLE `province` (
 CREATE TABLE `city` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL DEFAULT '',
+  `pid` int(11) unsigned NOT NULL DEFAULT 0 comment '省id',
   PRIMARY KEY (`id`)
 )ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '市';
 

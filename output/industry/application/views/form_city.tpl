@@ -26,6 +26,14 @@
 
                             
     	<div class="group">
+            <label class="label">{$city_fields.id}<span class="error">*</span></label>
+    		<div>
+    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($city_data)}{$city_data.id}{/if}" name="id" />
+    		</div>
+    		
+    	</div>
+    
+    	<div class="group">
             <label class="label">{$city_fields.name}<span class="error">*</span></label>
     		<div>
     	       	<input class="text_field" type="text" maxlength="255" value="{if isset($city_data)}{$city_data.name}{/if}" name="name" />

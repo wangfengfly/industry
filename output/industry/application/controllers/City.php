@@ -93,8 +93,10 @@ class City extends CI_Controller
 
                 /* we set the rules */
                 /* don't forget to edit these */
+				$this->form_validation->set_rules( 'id', lang('id'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'name', lang('name'), 'required|max_length[45]' );
 
+				$data_post['id'] = $this->input->post( 'id' );
 				$data_post['name'] = $this->input->post( 'name' );
 
                 if ( $this->form_validation->run() == FALSE )
@@ -158,8 +160,10 @@ class City extends CI_Controller
                 $fields = $this->model_city->fields();
                 /* we set the rules */
                 /* don't forget to edit these */
+				$this->form_validation->set_rules( 'id', lang('id'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'name', lang('name'), 'required|max_length[45]' );
 
+				$data_post['id'] = $this->input->post( 'id' );
 				$data_post['name'] = $this->input->post( 'name' );
 
                 if ( $this->form_validation->run() == FALSE )

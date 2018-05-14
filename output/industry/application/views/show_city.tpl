@@ -17,6 +17,9 @@
                                 <th>Value</th>
                         	</thead>
 						    <tr class="{cycle values='odd,even'}">
+                            <td>{$city_fields.pid}:</td>
+                            <td>{$city_data.pid}</td>
+                        </tr><tr class="{cycle values='odd,even'}">
                             <td>{$city_fields.id}:</td>
                             <td>{$city_data.id}</td>
                         </tr><tr class="{cycle values='odd,even'}">

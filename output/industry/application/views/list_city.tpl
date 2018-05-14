@@ -16,7 +16,8 @@
                             <table class="table">
                             	<thead>
                                     <th width="20"> </th>
-                                    			<th>{$city_fields.id}</th>
+                                    			<th>{$city_fields.pid}</th>
+			<th>{$city_fields.id}</th>
 			<th>{$city_fields.name}</th>
 
                                     <th width="80">Actions</th>
@@ -24,14 +25,15 @@
                             	<tbody>
                                 	{foreach $city_data as $row}
                                         <tr class="{cycle values='odd,even'}">
-                                            <td><input type="checkbox" class="checkbox" name="delete_ids[]" value="{$row.id}" /></td>
-                                            				<td>{$row.id}</td>
+                                            <td><input type="checkbox" class="checkbox" name="delete_ids[]" value="{$row.pid}" /></td>
+                                            				<td>{$row.pid}</td>
+				<td>{$row.id}</td>
 				<td>{$row.name}</td>
 
                                             <td width="80">
-                                                <a href="city/show/{$row.id}"><img src="iscaffold/images/view.png" alt="Show record" /></a>
-                                                <a href="city/edit/{$row.id}"><img src="iscaffold/images/edit.png" alt="Edit record" /></a>
-                                                <a href="javascript:chk('city/delete/{$row.id}')"><img src="iscaffold/images/delete.png" alt="Delete record" /></a>
+                                                <a href="city/show/{$row.pid}"><img src="iscaffold/images/view.png" alt="Show record" /></a>
+                                                <a href="city/edit/{$row.pid}"><img src="iscaffold/images/edit.png" alt="Edit record" /></a>
+                                                <a href="javascript:chk('city/delete/{$row.pid}')"><img src="iscaffold/images/delete.png" alt="Delete record" /></a>
                                             </td>
                             		    </tr>
                                 	{/foreach}
