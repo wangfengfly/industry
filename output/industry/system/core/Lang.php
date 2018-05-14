@@ -205,7 +205,7 @@ class CI_Lang {
 		if(count($uri) > 0){
 			$tablename = $uri[1];
 		}
-		if($key == 'index.php'){
+		if($tablename == 'index.php'){
 			$tablename = $uri[2];
 		}
 		$value = isset($this->language[$tablename][$line]) ? $this->language[$tablename][$line] : FALSE;
