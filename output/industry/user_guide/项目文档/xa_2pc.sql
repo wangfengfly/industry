@@ -41,3 +41,24 @@ CREATE TABLE `projects` (
   index `idx_jsdd`(`jsdd`)
 )ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '项目';
 
+CREATE TABLE `park` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `identifier` int(11) unsigned not null DEFAULT 0 comment '编号',
+  `code` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '代码',
+  `name` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '园区名称',
+  `create_time` int(11) UNSIGNED not null DEFAULT 0 comment '建立时间',
+  `area` float unsigned not null DEFAULT 0 comment '占地面积,公顷',
+  `prime_ind1` VARCHAR(20) not null DEFAULT '' comment '主导产业1',
+  `prime_ind2` VARCHAR(20) not null DEFAULT '' comment '主导产业2',
+  `prime_ind3` VARCHAR(20) not null DEFAULT '' comment '主导产业3',
+  `prime_ind4` VARCHAR(20) not null DEFAULT '' comment '主导产业4',
+  `intro` text not null DEFAULT '' comment '园区简介',
+  `url` VARCHAR(100) not NULL DEFAULT '' comment '园区官网',
+  `phone` VARCHAR(20) not NULL DEFAULT '' comment '联系电话',
+  `email` VARCHAR(20) not null DEFAULT '' comment '邮箱',
+  `wechat` VARCHAR(50) not null DEFAULT ''comment '微信公众号',
+  `companies` VARCHAR(500) not null DEFAULT '' comment '园区企业',
+  PRIMARY KEY (`id`),
+  unique key `uidx_iden`(`identifier`)
+)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '园区表';
+
