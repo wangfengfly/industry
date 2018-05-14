@@ -164,6 +164,17 @@ class CI_Lang {
 			return;
 		}
 
+		if ( ! isset($lang2) OR ! is_array($lang2))
+		{
+			log_message('error', 'Language file contains no data lang2: language/'.$idiom.'/'.$langfile);
+
+			if ($return === TRUE)
+			{
+				return array();
+			}
+			return;
+		}
+
 		if ($return === TRUE)
 		{
 			return $lang;
@@ -171,7 +182,7 @@ class CI_Lang {
 
 		$this->is_loaded[$langfile] = $idiom;
 		$this->language = array_merge($this->language, $lang);
-
+		$this->language = array_merge($this->language, $lang2);
 		log_message('info', 'Language file loaded: language/'.$idiom.'/'.$langfile);
 		return TRUE;
 	}
@@ -189,8 +200,15 @@ class CI_Lang {
 	 */
 	public function line($line, $log_errors = TRUE)
 	{
-		$value = isset($this->language[$line]) ? $this->language[$line] : FALSE;
-
+		$uri = $_SERVER['REQUEST_URI'];
+		$uri = explode("/", $uri);
+		if(count($uri) > 0){
+			$tablename = $uri[1];
+		}
+		if($key == 'index.php'){
+			$tablename = $uri[2];
+		}
+		$value = isset($this->language[$tablename][$line]) ? $this->language[$tablename][$line] : FALSE;
 		// Because killer robots like unicorns!
 		if ($value === FALSE && $log_errors === TRUE)
 		{
