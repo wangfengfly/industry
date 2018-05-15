@@ -24,6 +24,26 @@ class Model_city extends CI_Model
         $this->raw_data = FALSE;  
     }
 
+    public function getall(){
+        $cities = $this->db->get('city')->result_array();
+        $city_map = array();
+        foreach($cities as $city){
+            $id = intval($city['id']);
+            $city_map[$id] = $city;
+        }
+        return $city_map;
+    }
+
+    public function getall2name(){
+        $city_map = $this->getall();
+        $data = array();
+        $data[0] = '全国';
+        foreach($city_map as $id=>&$item){
+            $data[$id] = $item['name'];
+        }
+        return $data;
+    }
+
 	function get ( $id, $get_one = false )
 	{
         

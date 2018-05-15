@@ -34,6 +34,21 @@ class Projects extends CI_Controller
 		foreach($data_info as &$item){
 			$item['xmxz'] = Model_projects::XMXZ_ARR2[intval($item['xmxz'])];
 		}
+		//建设地点映射
+		$this->load->model('model_province');
+		$provinces = $this->model_province->getall2name();
+		$this->load->model('model_city');
+		$cities = $this->model_city->getall2name();
+		foreach($data_info as &$item){
+			$jsdd1 = intval($item['jsdd1']);
+			$jsdd2 = intval($item['jsdd2']);
+			if(isset($provinces[$jsdd1])){
+				$item['jsdd1'] = $provinces[$jsdd1];
+			}
+			if(isset($cities[$jsdd2])){
+				$item['jsdd2'] = $cities[$jsdd2];
+			}
+		}
         
 
         $this->template->assign( 'pager', $this->model_projects->pager );
@@ -56,7 +71,15 @@ class Projects extends CI_Controller
         $fields = $this->model_projects->fields( TRUE );
         //项目性质
 		$data['xmxz'] = Model_projects::XMXZ_ARR2[intval($data['xmxz'])];
-
+		//建设地点映射
+		$this->load->model('model_province');
+		$this->load->model('model_city');
+		$jsdd1 = intval($data['jsdd1']);
+		$jsdd2 = intval($data['jsdd2']);
+		$prov = $this->model_province->get($jsdd1);
+		$city = $this->model_city->get($jsdd2);
+		$data['jsdd1'] = $prov['name'];
+		$data['jsdd2'] = $city['name'];
         
         $this->template->assign( 'id', $id );
 		$this->template->assign( 'projects_fields', $fields );
@@ -87,10 +110,12 @@ class Projects extends CI_Controller
 				$sshy_options = array_merge($sshy_options, $this->model_industry->getall2name());
 				$this->template->assign('sshy_options', $sshy_options);
 				//建设地点
-				$this->load->model('model_area');
-				$jsdd_options = array(0=>'全国');
-				$jsdd_options = array_merge($jsdd_options, $this->model_area->getall2name());
-				$this->template->assign('jsdd_options', $jsdd_options);
+				$this->load->model('model_province');
+				$jsdd1_options = $this->model_province->getall2name();
+				$this->template->assign('jsdd1_options', $jsdd1_options);
+				$this->load->model('model_city');
+				$jsdd2_options = $this->model_city->getall2name();
+				$this->template->assign('jsdd2_options', $jsdd2_options);
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'projects_fields', $fields );
@@ -189,10 +214,12 @@ class Projects extends CI_Controller
 				$sshy_options = array_merge($sshy_options, $this->model_industry->getall2name());
 				$this->template->assign('sshy_options', $sshy_options);
 				//建设地点
-				$this->load->model('model_area');
-				$jsdd_options = array(0=>'全国');
-				$jsdd_options = array_merge($jsdd_options, $this->model_area->getall2name());
-				$this->template->assign('jsdd_options', $jsdd_options);
+				$this->load->model('model_province');
+				$jsdd1_options = $this->model_province->getall2name();
+				$this->template->assign('jsdd1_options', $jsdd1_options);
+				$this->load->model('model_city');
+				$jsdd2_options = $this->model_city->getall2name();
+				$this->template->assign('jsdd2_options', $jsdd2_options);
 
                 
           		$this->template->assign( 'action_mode', 'edit' );

@@ -35,7 +35,7 @@ class Model_projects extends CI_Model
 	function get ( $id, $get_one = false )
 	{
         
-	    $select_statement = ( $this->raw_data ) ? 'id,name,sshy1,sshy2,jsdw,jsdd1,jsdd2,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq' : 'id,name,sshy1,sshy2,jsdw,jsdd,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq';
+	    $select_statement = ( $this->raw_data ) ? 'id,name,sshy1,sshy2,jsdw,jsdd1,jsdd2,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq' : 'id,name,sshy1,sshy2,jsdw,jsdd1,jsdd2,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq';
 		$this->db->select( $select_statement );
 		$this->db->from('projects');
         
