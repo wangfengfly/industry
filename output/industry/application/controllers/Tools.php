@@ -73,36 +73,88 @@ class Tools extends CI_Controller{
     }
 
     /**
+     * @param $str
+     * @param $length
+     * @param bool|true $suffix
+     * @param int $start
+     * @param string $charset
+     * @return string
+     * 截取指定长度的中文字符串
+     */
+    private function cutStr($str, $length, $suffix=true, $start=0, $charset="utf-8") {
+        $returnstr = '';
+        $i = 0;
+        $l = 0;
+        while ($l<$length) {
+            $sub = mb_substr($str, $i, 1, $charset);
+            $i++;
+            $returnstr .= $sub;
+            if (strlen($sub)==1) {
+                $l += (($sub == "\r") || ($sub == "\n"))?0:0.5;
+            }
+            else {
+                $l++;
+            }
+        }
+        if (mb_strlen($str, $charset) > mb_strlen($returnstr, $charset) && $suffix) {
+            $returnstr .= ($suffix === true)?'...':$suffix;
+        }
+        return $returnstr;
+    }
+
+    /**
+     * @param $name
+     * 去掉地区里面的省或者市
+     */
+    private function rm($name){
+        //去掉地区里面的省或者市
+        if(strpos($name, '省') !== false){
+            $name = $this->cutStr($name, strpos($name, '省')/3, false);
+        }else if(strpos($name, '市') !== false){
+            $name = $this->cutStr($name, strpos($name, '市')/3, false);
+        }
+        return $name;
+    }
+
+    /**
      * 导入地区数据
      */
     public function importArea(){
-        $tablename = 'area';
+        $tbl_province = 'province';
+        $tbl_city = 'city';
         $contents = file_get_contents($this->file);
         $contents = json_decode($contents, true);
         foreach($contents as $code=>$item){
             $name = $item['name'];
             $child = $item['child'];
+            $province = $name;
+            $data = array('name'=>$this->rm($province));
+            $this->db->insert($tbl_province, $data);
+            if($this->db->affected_rows() != 1){
+                $this->db->truncate($tbl_province);
+                exit('insert fail.please retry! sql:'.$this->db->last_query());
+            }
+            $pid = $this->db->insert_id();
+
             foreach($child as $_code=>$_item){
                 $_name = $_item['name'];
                 if($_name == '市辖区' || $_name=='县'){
                     $__child = $_item['child'];
                     foreach($__child as $__code=>$__item){
-                        $province = $name;
                         $city = $__item;
-                        $data = array('province'=>$province, 'city'=>$city);
-                        $this->db->insert($tablename, $data);
+                        $data = array('name'=>$this->rm($city), 'pid'=>$pid);
+                        $this->db->insert($tbl_city, $data);
                         if($this->db->affected_rows() != 1){
-                            $this->db->truncate($tablename);
+                            $this->db->truncate($tbl_city);
                             exit('insert fail.please retry! sql:'.$this->db->last_query());
                         }
                     }
                 }else{
-                    $province = $name;
                     $city = $_name;
-                    $data = array('province'=>$province, 'city'=>$city);
-                    $this->db->insert($tablename, $data);
+                    $data = array('name'=>$this->rm($city), 'pid'=>$pid);
+                    $this->db->insert($tbl_city, $data);
                     if($this->db->affected_rows() != 1){
-                        $this->db->truncate($tablename);
+                        $this->db->truncate($tbl_city);
                         exit('insert fail.please retry! sql:'.$this->db->last_query());
                     }
                 }
