@@ -78,8 +78,8 @@ class Projects extends CI_Controller
 		$jsdd2 = intval($data['jsdd2']);
 		$prov = $this->model_province->get($jsdd1);
 		$city = $this->model_city->get($jsdd2);
-		$data['jsdd1'] = $prov['name'];
-		$data['jsdd2'] = $city['name'];
+		$data['jsdd1'] = isset($prov['name']) ? $prov['name'] : '全国';
+		$data['jsdd2'] = isset($city['name']) ? $city['name'] : '全国';
         
         $this->template->assign( 'id', $id );
 		$this->template->assign( 'projects_fields', $fields );
