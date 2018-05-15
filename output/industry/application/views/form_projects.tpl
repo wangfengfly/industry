@@ -108,7 +108,7 @@
     	<div class="group">
             <label class="label">{$projects_fields.jsnr}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($projects_data)}{$projects_data.jsnr}{/if}" name="jsnr" />
+				<textarea name="jsnr" rows="20" cols="100">{$projects_data.jsnr|escape}</textarea>
     		</div>
     		
     	</div>
