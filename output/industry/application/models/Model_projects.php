@@ -35,7 +35,7 @@ class Model_projects extends CI_Model
 	function get ( $id, $get_one = false )
 	{
         
-	    $select_statement = ( $this->raw_data ) ? 'id,name,sshy1,sshy2,jsdw,jsdd,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq' : 'id,name,sshy1,sshy2,jsdw,jsdd,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq';
+	    $select_statement = ( $this->raw_data ) ? 'id,name,sshy1,sshy2,jsdw,jsdd1,jsdd2,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq' : 'id,name,sshy1,sshy2,jsdw,jsdd,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq';
 		$this->db->select( $select_statement );
 		$this->db->from('projects');
         
@@ -62,7 +62,7 @@ class Model_projects extends CI_Model
 	'sshy1' => $row['sshy1'],
 	'sshy2' => $row['sshy2'],
 	'jsdw' => $row['jsdw'],
-	'jsdd' => $row['jsdd'],
+	'jsdd1' => $row['jsdd1'], 'jsdd2' => $row['jsdd2'],
 	'tzztxz' => $row['tzztxz'],
 	'tze' => $row['tze'],
 	'jsnr' => $row['jsnr'],
@@ -118,7 +118,7 @@ class Model_projects extends CI_Model
 	{
         
 	    $this->db->start_cache();
-		$this->db->select( 'id,name,sshy1,sshy2,jsdw,jsdd,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq');
+		$this->db->select( 'id,name,sshy1,sshy2,jsdw,jsdd1,jsdd2,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq');
 		$this->db->from( 'projects' );
 		//$this->db->order_by( '', 'ASC' );
         
@@ -157,7 +157,7 @@ class Model_projects extends CI_Model
 	'sshy1' => $row['sshy1'],
 	'sshy2' => $row['sshy2'],
 	'jsdw' => $row['jsdw'],
-	'jsdd' => $row['jsdd'],
+	'jsdd1' => $row['jsdd1'], 'jsdd2' => $row['jsdd2'],
 	'tzztxz' => $row['tzztxz'],
 	'tze' => $row['tze'],
 	'jsnr' => $row['jsnr'],
@@ -179,7 +179,7 @@ class Model_projects extends CI_Model
 	{
 	    $meta = $this->metadata();
 	    $this->db->start_cache();
-		$this->db->select( 'id,name,sshy1,sshy2,jsdw,jsdd,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq');
+		$this->db->select( 'id,name,sshy1,sshy2,jsdw,jsdd1,jsdd2,tzztxz,tze,jsnr,jjzb,jssj1,jssj2,tags,xmxz,ssyq');
 		$this->db->from( 'projects' );
         
 
@@ -223,7 +223,7 @@ class Model_projects extends CI_Model
 	'sshy1' => $row['sshy1'],
 	'sshy2' => $row['sshy2'],
 	'jsdw' => $row['jsdw'],
-	'jsdd' => $row['jsdd'],
+	'jsdd1' => $row['jsdd1'],'jsdd2' => $row['jsdd2'],
 	'tzztxz' => $row['tzztxz'],
 	'tze' => $row['tze'],
 	'jsnr' => $row['jsnr'],
@@ -254,7 +254,8 @@ class Model_projects extends CI_Model
 	'sshy1' => lang('sshy1'),
 	'sshy2' => lang('sshy2'),
 	'jsdw' => lang('jsdw'),
-	'jsdd' => lang('jsdd'),
+	'jsdd1' => lang('jsdd1'),
+				'jsdd2' => lang('jsdd2'),
 	'tzztxz' => lang('tzztxz'),
 	'tze' => lang('tze'),
 	'jsnr' => lang('jsnr'),

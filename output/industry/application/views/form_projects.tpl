@@ -66,16 +66,28 @@
     	</div>
     
     	<div class="group">
-            <label class="label">{$projects_fields.jsdd}<span class="error">*</span></label>
+            <label class="label">{$projects_fields.jsdd1}<span class="error">*</span></label>
     		<div>
 				{if isset($projects_data)}
-					{html_options name=jsdd options=$jsdd_options selected=$projects_data.jsdd}
+					{html_options name=jsdd1 options=$jsdd1_options selected=$projects_data.jsdd1}
 				{else}
-					{html_options name=jsdd options=$jsdd_options selected=0}
+					{html_options name=jsdd1 options=$jsdd1_options selected=0}
 				{/if}
     		</div>
     		
     	</div>
+
+		<div class="group">
+			<label class="label">{$projects_fields.jsdd2}<span class="error">*</span></label>
+			<div>
+				{if isset($projects_data)}
+					{html_options name=jsdd2 options=$jsdd2_options selected=$projects_data.jsdd2}
+				{else}
+					{html_options name=jsdd2 options=$jsdd2_options selected=0}
+				{/if}
+			</div>
+
+		</div>
     
     	<div class="group">
             <label class="label">{$projects_fields.tzztxz}<span class="error">*</span></label>

@@ -31,10 +31,16 @@
                         </tr><tr class="{cycle values='odd,even'}">
                             <td>{$projects_fields.jsdw}:</td>
                             <td>{$projects_data.jsdw}</td>
-                        </tr><tr class="{cycle values='odd,even'}">
-                            <td>{$projects_fields.jsdd}:</td>
-                            <td>{$projects_data.jsdd}</td>
-                        </tr><tr class="{cycle values='odd,even'}">
+                        </tr>
+                            <tr class="{cycle values='odd,even'}">
+                            <td>{$projects_fields.jsdd1}:</td>
+                            <td>{$projects_data.jsdd1}</td>
+                        </tr>
+                            <tr class="{cycle values='odd,even'}">
+                                <td>{$projects_fields.jsdd2}:</td>
+                                <td>{$projects_data.jsdd2}</td>
+                            </tr>
+                            <tr class="{cycle values='odd,even'}">
                             <td>{$projects_fields.tzztxz}:</td>
                             <td>{$projects_data.tzztxz}</td>
                         </tr><tr class="{cycle values='odd,even'}">

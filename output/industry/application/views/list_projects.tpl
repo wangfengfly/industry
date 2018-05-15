@@ -21,7 +21,7 @@
 			<th>{$projects_fields.sshy1}</th>
 			<th>{$projects_fields.sshy2}</th>
 			<th>{$projects_fields.jsdw}</th>
-			<th>{$projects_fields.jsdd}</th>
+			<th>{$projects_fields.jsdd1}</th><th>{$projects_fields.jsdd2}</th>
 			<th>{$projects_fields.tzztxz}</th>
 			<th>{$projects_fields.tze}</th>
 			<th>{$projects_fields.jsnr}</th>
@@ -43,7 +43,7 @@
 				<td>{$row.sshy1}</td>
 				<td>{$row.sshy2}</td>
 				<td>{$row.jsdw}</td>
-				<td>{$row.jsdd}</td>
+				<td>{$row.jsdd1}</td><td>{$row.jsdd2}</td>
 				<td>{$row.tzztxz}</td>
 				<td>{$row.tze}</td>
 				<td>{$row.jsnr}</td>

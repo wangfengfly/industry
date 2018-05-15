@@ -112,7 +112,8 @@ class Projects extends CI_Controller
 				$this->form_validation->set_rules( 'sshy1', lang('sshy1'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'sshy2', lang('sshy2'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'jsdw', lang('jsdw'), 'required|max_length[200]' );
-				$this->form_validation->set_rules( 'jsdd', lang('jsdd'), 'required|max_length[11]|integer' );
+				$this->form_validation->set_rules( 'jsdd1', lang('jsdd1'), 'required|max_length[11]|integer' );
+				$this->form_validation->set_rules( 'jsdd2', lang('jsdd2'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'tzztxz', lang('tzztxz'), 'required|max_length[45]' );
 				$this->form_validation->set_rules( 'tze', lang('tze'), 'required|numeric' );
 				$this->form_validation->set_rules( 'jsnr', lang('jsnr'), 'required' );
@@ -127,7 +128,8 @@ class Projects extends CI_Controller
 				$data_post['sshy1'] = $this->input->post( 'sshy1' );
 				$data_post['sshy2'] = $this->input->post( 'sshy2' );
 				$data_post['jsdw'] = $this->input->post( 'jsdw' );
-				$data_post['jsdd'] = $this->input->post( 'jsdd' );
+				$data_post['jsdd1'] = $this->input->post( 'jsdd1' );
+				$data_post['jsdd2'] = $this->input->post( 'jsdd2' );
 				$data_post['tzztxz'] = $this->input->post( 'tzztxz' );
 				$data_post['tze'] = $this->input->post( 'tze' );
 				$data_post['jsnr'] = $this->input->post( 'jsnr' );
@@ -212,7 +214,8 @@ class Projects extends CI_Controller
 				$this->form_validation->set_rules( 'sshy1', lang('sshy1'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'sshy2', lang('sshy2'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'jsdw', lang('jsdw'), 'required|max_length[200]' );
-				$this->form_validation->set_rules( 'jsdd', lang('jsdd'), 'required|max_length[11]|integer' );
+				$this->form_validation->set_rules( 'jsdd1', lang('jsdd1'), 'required|max_length[11]|integer' );
+				$this->form_validation->set_rules( 'jsdd2', lang('jsdd2'), 'required|max_length[11]|integer' );
 				$this->form_validation->set_rules( 'tzztxz', lang('tzztxz'), 'required|max_length[45]' );
 				$this->form_validation->set_rules( 'tze', lang('tze'), 'required|numeric' );
 				$this->form_validation->set_rules( 'jsnr', lang('jsnr'), 'required' );
@@ -227,7 +230,8 @@ class Projects extends CI_Controller
 				$data_post['sshy1'] = $this->input->post( 'sshy1' );
 				$data_post['sshy2'] = $this->input->post( 'sshy2' );
 				$data_post['jsdw'] = $this->input->post( 'jsdw' );
-				$data_post['jsdd'] = $this->input->post( 'jsdd' );
+				$data_post['jsdd1'] = $this->input->post( 'jsdd1' );
+				$data_post['jsdd2'] = $this->input->post( 'jsdd2' );
 				$data_post['tzztxz'] = $this->input->post( 'tzztxz' );
 				$data_post['tze'] = $this->input->post( 'tze' );
 				$data_post['jsnr'] = $this->input->post( 'jsnr' );
