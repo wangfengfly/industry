@@ -28,7 +28,11 @@
     	<div class="group">
             <label class="label">{$economy_fields.park_id}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($economy_data)}{$economy_data.park_id}{/if}" name="park_id" />
+				{if isset($economy_data)}
+					{html_options name=park_id options=$parks selected=$economy_data.park_id}
+				{else}
+					{html_options name=park_id options=$parks selected=0}
+				{/if}
     		</div>
     		
     	</div>

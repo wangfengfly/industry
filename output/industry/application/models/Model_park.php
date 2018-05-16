@@ -24,6 +24,25 @@ class Model_park extends CI_Model
         $this->raw_data = FALSE;  
     }
 
+	public function getall(){
+		$parks = $this->db->get('park')->result_array();
+		$park_map = array();
+		foreach($parks as $park){
+			$id = intval($park['id']);
+			$park_map[$id] = $park;
+		}
+		return $park_map;
+	}
+
+	public function getall2name(){
+		$park_map = $this->getall();
+		$data = array();
+		foreach($park_map as $id=>&$item){
+			$data[$id] = $item['name'];
+		}
+		return $data;
+	}
+
 	function get ( $id, $get_one = false )
 	{
         

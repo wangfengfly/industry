@@ -74,8 +74,10 @@ class Economy extends CI_Controller
         {
             case 'GET':
                 $fields = $this->model_economy->fields();
-                
-                
+                //所属园区映射
+				$this->load->model('model_park');
+				$parks = $this->model_park->getall2name();
+                $this->template->assign('parks', $parks);
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'economy_fields', $fields );
@@ -163,8 +165,11 @@ class Economy extends CI_Controller
                 $this->model_economy->raw_data = TRUE;
         		$data = $this->model_economy->get( $id );
                 $fields = $this->model_economy->fields();
-                
-                
+
+				//所属园区映射
+				$this->load->model('model_park');
+				$parks = $this->model_park->getall2name();
+				$this->template->assign('parks', $parks);
                 
                 
           		$this->template->assign( 'action_mode', 'edit' );
