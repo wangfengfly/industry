@@ -821,9 +821,10 @@ class model_iscaffold extends CI_Model
     		$code_lang .= "\t Table: $name_controller\n";
     		$code_lang .= "*************************/\n";
 
+            $tablename = strtolower($name_controller);
     		foreach ( $fields as $key => $field ) 
     		{
-        		$code_lang .= "\$lang['$field'] = '" . $this->table_config[$key]['sf_label'] . "';\n";
+        		$code_lang .= "\$lang2['$tablename']['$field'] = '" . $this->table_config[$key]['sf_label'] . "';\n";
 
         		// Add enum values too
         		if( !empty( $table_meta[ $field ]['enum_values'] ) )
