@@ -68,3 +68,22 @@ CREATE TABLE `park` (
   PRIMARY KEY (`id`)
 )ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '园区表';
 
+CREATE TABLE `economy` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `park_id` int(11) unsigned not null DEFAULT 0 comment '所属园区id',
+  `year` int(11) unsigned not null DEFAULT 0 comment '年份',
+  `pepole_count` FLOAT unsigned NOT NULL DEFAULT 0 COMMENT '年末从业人员(万人)',
+  `gross` FLOAT unsigned NOT NULL DEFAULT 0 COMMENT '工业总产值（亿元）',
+  `delivery` FLOAT UNSIGNED not null DEFAULT 0 comment '出口交货值（亿元）',
+  `total_assets` float unsigned not null DEFAULT 0 comment '年末资产总计（亿元）',
+  `current_assets` FLOAT unsigned not null DEFAULT 0 comment '流动资产合计（亿元）',
+  `debt` FLOAT unsigned not null DEFAULT 0 comment '年末负债合计（亿元）',
+  `owners` FLOAT unsigned not null DEFAULT 0 comment '年末所有者权益（亿元）',
+  `revenue` FLOAT unsigned not null DEFAULT 0 comment '主营业务收入（亿元）',
+  `profit` FLOAT unsigned not null DEFAULT 0 comment '利润总额（亿元）',
+  `tax` FLOAT unsigned not NULL DEFAULT 0 comment '税金总额（亿元）',
+  `loss` FLOAT unsigned not NULL DEFAULT 0 comment '亏损企业总额（亿元）',
+  PRIMARY KEY (`id`),
+  unique key `uidx_parkid_year`(`park_id`,`year`)
+)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '经济指标表';
+
