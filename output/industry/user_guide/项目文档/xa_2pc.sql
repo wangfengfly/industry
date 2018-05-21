@@ -87,3 +87,19 @@ CREATE TABLE `economy` (
   unique key `uidx_parkid_year`(`park_id`,`year`)
 )ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '经济指标表';
 
+CREATE TABLE `policy` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `pub_time` int(11) unsigned not null DEFAULT 0 comment '发布时间，20180517',
+  `ind_id` int(11) unsigned not null DEFAULT 0 comment '行业',
+  `pid` int(11) unsigned not null DEFAULT 0 comment '省',
+  `department` tinyint(2) unsigned not null DEFAULT 0 comment '部门',
+  `title` VARCHAR(100) not null DEFAULT '' comment '标题',
+  `content` text not null DEFAULT '' comment '内容',
+  `attach_url` VARCHAR(100) not null DEFAULT '' comment '文档下载地址',
+  PRIMARY KEY (`id`),
+  index `idx_pid`(`pid`),
+  index `idx_department`(`department`),
+  index `idx_indid`(`ind_id`),
+  index `idx_pubtime`(`pub_time`)
+)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '政策表';
+

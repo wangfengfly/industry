@@ -7,6 +7,7 @@ $lang['city'] = 'City';
 $lang['economy'] = 'Economy';
 $lang['industry'] = 'Industry';
 $lang['park'] = 'Park';
+$lang['policy'] = 'Policy';
 $lang['projects'] = 'Projects';
 $lang['province'] = 'Province';
 
@@ -65,6 +66,19 @@ $lang2['park']['phone'] = '联系电话';
 $lang2['park']['email'] = '邮箱';
 $lang2['park']['wechat'] = '微信公众号';
 $lang2['park']['companies'] = '园区企业';
+
+
+/*************************
+	 Table: Policy
+*************************/
+$lang2['policy']['id'] = 'id';
+$lang2['policy']['pub_time'] = '发布时间';
+$lang2['policy']['ind_id'] = '行业';
+$lang2['policy']['pid'] = '省份';
+$lang2['policy']['department'] = '部门';
+$lang2['policy']['title'] = '标题';
+$lang2['policy']['content'] = '内容';
+$lang2['policy']['attach_url'] = '下载附件';
 
 
 /*************************

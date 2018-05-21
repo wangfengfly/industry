@@ -60,6 +60,7 @@
 						<li{if isset($table_name)}{if $table_name == 'Economy'} class='active'{/if}{/if}><a href='economy'>Economy</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Industry'} class='active'{/if}{/if}><a href='industry'>Industry</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Park'} class='active'{/if}{/if}><a href='park'>Park</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Policy'} class='active'{/if}{/if}><a href='policy'>Policy</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Projects'} class='active'{/if}{/if}><a href='projects'>Projects</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Province'} class='active'{/if}{/if}><a href='province'>Province</a></li>
 					</ul>
