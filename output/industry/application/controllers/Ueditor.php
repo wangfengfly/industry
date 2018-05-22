@@ -8,6 +8,11 @@
 class Ueditor extends CI_Controller {
     private $CONFIG;
 
+    public function __construct(){
+        parent::__construct();
+        error_reporting(0);
+    }
+
     public function index(){
         header("Content-Type: text/html; charset=utf-8");
         $this->CONFIG = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents(__DIR__."/../config/ueditor/config.json")), true);

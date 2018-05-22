@@ -37,9 +37,6 @@
                         </tr><tr class="{cycle values='odd,even'}">
                             <td>{$policy_fields.content}:</td>
                             <td>{$policy_data.content}</td>
-                        </tr><tr class="{cycle values='odd,even'}">
-                            <td>{$policy_fields.attach_url}:</td>
-                            <td>{$policy_data.attach_url}</td>
                         </tr>
 						</table>
                         <div class="actions-bar wat-cf">

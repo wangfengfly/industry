@@ -76,13 +76,14 @@
     		
     	</div>
     
-    	<div class="group">
+    	{*<div class="group">
             <label class="label">{$policy_fields.attach_url}<span class="error">*</span></label>
     		<div>
     	       	<input class="text_field" type="text" maxlength="255" value="{if isset($policy_data)}{$policy_data.attach_url}{/if}" name="attach_url" />
     		</div>
     		
-    	</div>
+    	</div>*}
+                            <input class="text_field" type="hidden" maxlength="255" value="0" name="attach_url" />
     
 
                             <div class="group navform wat-cf">

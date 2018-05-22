@@ -22,8 +22,6 @@
 			<th>{$policy_fields.pid}</th>
 			<th>{$policy_fields.department}</th>
 			<th>{$policy_fields.title}</th>
-			<th>{$policy_fields.content}</th>
-			<th>{$policy_fields.attach_url}</th>
 
                                     <th width="80">Actions</th>
                             	</thead>
@@ -37,8 +35,6 @@
 				<td>{$row.pid}</td>
 				<td>{$row.department}</td>
 				<td>{$row.title}</td>
-				<td>{$row.content}</td>
-				<td>{$row.attach_url}</td>
 
                                             <td width="80">
                                                 <a href="policy/show/{$row.id}"><img src="iscaffold/images/view.png" alt="Show record" /></a>
