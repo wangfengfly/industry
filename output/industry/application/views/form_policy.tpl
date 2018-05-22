@@ -68,7 +68,10 @@
     	<div class="group">
             <label class="label">{$policy_fields.content}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($policy_data)}{$policy_data.content}{/if}" name="content" />
+    	       	{*<input class="text_field" type="text" maxlength="255" value="{if isset($policy_data)}{$policy_data.content}{/if}" name="content" />*}
+                <!-- 加载编辑器的容器 -->
+                <script id="content" name="content" type="text/plain">
+                </script>
     		</div>
     		
     	</div>
@@ -92,4 +95,22 @@
                         </form>
                     </div><!-- .inner -->
                 </div><!-- .content -->
+
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="iscaffold/js/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="iscaffold/js/ueditor/ueditor.all.min.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('content');
+        //这段要放在文本编辑器的实例化之后
+        /*function click(){
+            if (!UE.getEditor('content').hasContents()){
+                alert('请先填写内容!');
+            }else{
+                document.setweb.info.value=UE.getEditor('editor').getContent();
+                document.setweb.submit();
+            }
+        }*/
+    </script>
             </div><!-- .block -->
