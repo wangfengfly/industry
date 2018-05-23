@@ -7,7 +7,9 @@ class Policy extends CI_Controller
 		parent::__construct();
 
 		$this->load->library( 'template' ); 
-		$this->load->model( 'model_policy' ); 
+		$this->load->model( 'model_policy' );
+		$this->load->model('model_province');
+		$this->load->model('model_industry');
 		
 		$this->load->helper( 'form' );
 		$this->load->helper( 'language' ); 
@@ -30,7 +32,14 @@ class Policy extends CI_Controller
         $this->model_policy->pagination( TRUE );
 		$data_info = $this->model_policy->lister( $page );
         $fields = $this->model_policy->fields( TRUE );
-        
+		$provinces = $this->model_province->getall2name();
+		$inds = $this->model_industry->getFirstInds();
+		foreach($data_info as &$item){
+			$item['pid'] = $provinces[$item['pid']];
+			$item['ind_id'] = $inds[$item['ind_id']];
+			$item['department'] = Model_policy::DEPARTMENT[$item['department']];
+		}
+
 
         $this->template->assign( 'pager', $this->model_policy->pager );
 		$this->template->assign( 'policy_fields', $fields );
@@ -50,8 +59,12 @@ class Policy extends CI_Controller
     {
 		$data = $this->model_policy->get( $id );
         $fields = $this->model_policy->fields( TRUE );
-        
 
+		$provinces = $this->model_province->getall2name();
+		$inds = $this->model_industry->getFirstInds();
+		$data['pid'] = $provinces[$data['pid']];
+		$data['ind_id'] = $inds[$data['ind_id']];
+		$data['department'] = Model_policy::DEPARTMENT[$data['department']];
         
         $this->template->assign( 'id', $id );
 		$this->template->assign( 'policy_fields', $fields );
@@ -75,8 +88,13 @@ class Policy extends CI_Controller
             case 'GET':
                 $fields = $this->model_policy->fields();
                 
-                
-                
+                $provinces = $this->model_province->getall2name();
+				$inds = $this->model_industry->getFirstInds();
+                $this->template->assign('provinces', $provinces);
+				$this->template->assign('inds', $inds);
+				$this->template->assign('deps', Model_policy::DEPARTMENT);
+
+
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'policy_fields', $fields );
                 $this->template->assign( 'metadata', $this->model_policy->metadata() );
@@ -151,9 +169,12 @@ class Policy extends CI_Controller
                 $this->model_policy->raw_data = TRUE;
         		$data = $this->model_policy->get( $id );
                 $fields = $this->model_policy->fields();
-                
-                
-                
+
+				$provinces = $this->model_province->getall2name();
+				$inds = $this->model_industry->getFirstInds();
+				$this->template->assign('provinces', $provinces);
+				$this->template->assign('inds', $inds);
+				$this->template->assign('deps', Model_policy::DEPARTMENT);
                 
           		$this->template->assign( 'action_mode', 'edit' );
         		$this->template->assign( 'policy_data', $data );

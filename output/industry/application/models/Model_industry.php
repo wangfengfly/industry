@@ -108,10 +108,26 @@ class Model_industry extends CI_Model
     public function getall2name(){
         $industry_map = $this->getall();
         $data = array();
+        $data[0] = '无';
         foreach($industry_map as $id=>$item){
             $data[$id] = $item['name'];
         }
         return $data;
+    }
+
+    /**
+     * 获取第一级行业
+     */
+    public function getFirstInds(){
+        $this->db->where('parentid', 0);
+        $inds = $this->db->get('industry')->result_array();
+        $inds_map = array();
+        $inds_map[0] = '无';
+        foreach($inds as $ind){
+            $id = intval($ind['id']);
+            $inds_map[$id] = $ind['name'];
+        }
+        return $inds_map;
     }
 
 

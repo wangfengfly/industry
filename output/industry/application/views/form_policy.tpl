@@ -36,7 +36,11 @@
     	<div class="group">
             <label class="label">{$policy_fields.ind_id}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($policy_data)}{$policy_data.ind_id}{/if}" name="ind_id" />
+                {if isset($policy_data)}
+                    {html_options name=ind_id options=$inds selected=$policy_data.ind_id}
+                {else}
+                    {html_options name=ind_id options=$inds selected=0}
+                {/if}
     		</div>
     		
     	</div>
@@ -44,7 +48,11 @@
     	<div class="group">
             <label class="label">{$policy_fields.pid}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($policy_data)}{$policy_data.pid}{/if}" name="pid" />
+                {if isset($policy_data)}
+                    {html_options name=pid options=$provinces selected=$policy_data.pid}
+                {else}
+                    {html_options name=pid options=$provinces selected=0}
+                {/if}
     		</div>
     		
     	</div>
@@ -52,7 +60,11 @@
     	<div class="group">
             <label class="label">{$policy_fields.department}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($policy_data)}{$policy_data.department}{/if}" name="department" />
+                {if isset($policy_data)}
+                    {html_options name=department options=$deps selected=$policy_data.department}
+                {else}
+                    {html_options name=department options=$deps selected=0}
+                {/if}
     		</div>
     		
     	</div>
