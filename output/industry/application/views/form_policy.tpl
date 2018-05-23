@@ -83,6 +83,7 @@
     	       	{*<input class="text_field" type="text" maxlength="255" value="{if isset($policy_data)}{$policy_data.content}{/if}" name="content" />*}
                 <!-- 加载编辑器的容器 -->
                 <script id="content" name="content" type="text/plain">
+                    {$policy_data.content}
                 </script>
     		</div>
     		
