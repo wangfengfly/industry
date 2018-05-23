@@ -118,7 +118,10 @@
     <script type="text/javascript" src="iscaffold/js/ueditor/ueditor.all.min.js"></script>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
-        var ue = UE.getEditor('content');
+        var ue = UE.getEditor('content', {
+            initialFrameHeight:600,//设置编辑器高度
+            scaleEnabled:true
+        });
         //这段要放在文本编辑器的实例化之后
         /*function click(){
             if (!UE.getEditor('content').hasContents()){
