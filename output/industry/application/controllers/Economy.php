@@ -84,7 +84,7 @@ class Economy extends CI_Controller
                 $this->template->assign( 'metadata', $this->model_economy->metadata() );
         		$this->template->assign( 'table_name', 'Economy' );
         		$this->template->assign( 'template', 'form_economy' );
-        		$this->template->display( 'frame_admin.tpl' );
+        		$this->template->display( 'frame_admin_new.tpl' );
             break;
 
             /**
@@ -137,7 +137,7 @@ class Economy extends CI_Controller
                     $this->template->assign( 'metadata', $this->model_economy->metadata() );
             		$this->template->assign( 'table_name', 'Economy' );
             		$this->template->assign( 'template', 'form_economy' );
-            		$this->template->display( 'frame_admin.tpl' );
+            		$this->template->display( 'frame_admin_new.tpl' );
                 }
                 elseif ( $this->form_validation->run() == TRUE )
                 {
