@@ -10,7 +10,7 @@
     -->
     <link rel="stylesheet" href="iscaffold/backend_skins/stylesheets/themes/default/style.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="iscaffold/backend_skins/stylesheets/override.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="iscaffold/editor/CLEditor/jquery.CLEditor.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="iscaffold/editor/CLEditor/jquery.cleditor.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="iscaffold/jquery-ui/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" />
 
     <script type="text/javascript" src="iscaffold/js/jquery-1.6.4.min.js"></script>
