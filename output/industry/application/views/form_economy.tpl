@@ -28,11 +28,12 @@
     	<div class="group">
             <label class="label">{$economy_fields.park_id}<span class="error">*</span></label>
     		<div>
-				{if isset($economy_data)}
+				<input type="text" id="park_id" name="park_id" />
+				{*{if isset($economy_data)}
 					{html_options name=park_id options=$parks selected=$economy_data.park_id}
 				{else}
 					{html_options name=park_id options=$parks selected=0}
-				{/if}
+				{/if}*}
     		</div>
     		
     	</div>
@@ -144,4 +145,26 @@
                         </form>
                     </div><!-- .inner -->
                 </div><!-- .content -->
+			<script>
+				//自动补全
+				$("#park_id").autocomplete({
+					source: function(request, response){
+						$.ajax({
+							url:'',
+							dataType: 'json',
+							data:{
+								'name': request.term
+							},
+							success: function(data){
+								response($.map($.parseJSON(data), function(item) {
+									return {
+										label: item.park_id + " " + item.name,
+										value: item.park_id
+									}
+								}));
+							}
+						});
+					}
+				});
+			</script>
             </div><!-- .block -->

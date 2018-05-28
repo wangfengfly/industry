@@ -24,6 +24,23 @@ class Model_park extends CI_Model
         $this->raw_data = FALSE;  
     }
 
+	/**
+	 * @param $name名称
+	 * 根据名称模糊匹配
+	 */
+	public function getByName($name){
+		$this->db->from('park');
+		$this->db->like('name', $name);
+		$query = $this->db->get();
+		$parks = $query->result_array();
+		$park_map = array();
+		foreach($parks as $park){
+			$id = intval($park['id']);
+			$park_map[$id] = $park['name'];
+		}
+		return $park_map;
+	}
+
 	public function getall(){
 		$parks = $this->db->get('park')->result_array();
 		$park_map = array();
