@@ -6,6 +6,8 @@
 $lang['city'] = 'City';
 $lang['economy'] = 'Economy';
 $lang['industry'] = 'Industry';
+$lang['menus'] = 'Menus';
+$lang['news'] = 'News';
 $lang['park'] = 'Park';
 $lang['policy'] = 'Policy';
 $lang['projects'] = 'Projects';
@@ -45,6 +47,29 @@ $lang2['economy']['loss'] = '亏损企业总额（亿元）';
 $lang2['industry']['id'] = 'id';
 $lang2['industry']['name'] = '行业名称';
 $lang2['industry']['parentid'] = '上一级行业';
+
+
+/*************************
+	 Table: Menus
+*************************/
+$lang2['menus']['id'] = 'id';
+$lang2['menus']['seq'] = '顺序号';
+$lang2['menus']['name'] = '名称';
+$lang2['menus']['ctime'] = '创建时间';
+
+
+/*************************
+	 Table: News
+*************************/
+$lang2['news']['id'] = 'id';
+$lang2['news']['menu_id'] = '栏目';
+$lang2['news']['pub_time'] = '发布时间';
+$lang2['news']['title'] = '标题';
+$lang2['news']['desc'] = '';
+$lang2['news']['img_url'] = '';
+$lang2['news']['content'] = '内容';
+$lang2['news']['tags'] = '关键词';
+$lang2['news']['author'] = '';
 
 
 /*************************

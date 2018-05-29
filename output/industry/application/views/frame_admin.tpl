@@ -10,7 +10,7 @@
     -->
     <link rel="stylesheet" href="iscaffold/backend_skins/stylesheets/themes/default/style.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="iscaffold/backend_skins/stylesheets/override.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="iscaffold/editor/CLEditor/jquery.cleditor.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="iscaffold/editor/CLEditor/jquery.CLEditor.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="iscaffold/jquery-ui/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css" media="screen" />
 
     <script type="text/javascript" src="iscaffold/js/jquery-1.6.4.min.js"></script>
@@ -59,6 +59,8 @@
                     <ul id="top_menu">						<li{if isset($table_name)}{if $table_name == 'City'} class='active'{/if}{/if}><a href='city'>City</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Economy'} class='active'{/if}{/if}><a href='economy'>Economy</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Industry'} class='active'{/if}{/if}><a href='industry'>Industry</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Menus'} class='active'{/if}{/if}><a href='menus'>Menus</a></li>
+						<li{if isset($table_name)}{if $table_name == 'News'} class='active'{/if}{/if}><a href='news'>News</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Park'} class='active'{/if}{/if}><a href='park'>Park</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Policy'} class='active'{/if}{/if}><a href='policy'>Policy</a></li>
 						<li{if isset($table_name)}{if $table_name == 'Projects'} class='active'{/if}{/if}><a href='projects'>Projects</a></li>
