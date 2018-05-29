@@ -103,3 +103,26 @@ CREATE TABLE `policy` (
   index `idx_pubtime`(`pub_time`)
 )ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '政策表';
 
+
+CREATE TABLE `menus` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `seq` tinyint(2) unsigned not null DEFAULT 0 comment '顺序号',
+  `name` varchar(100) not null DEFAULT '' comment '名称',
+  `ctime` timestamp not null DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '创建时间',
+  PRIMARY KEY (`id`)
+)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '菜单栏';
+
+CREATE TABLE `news` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `menu_id` int(11) unsigned not null DEFAULT 0 comment '所属栏目id',
+  `pub_time` timestamp not null DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '发布时间',
+  `title` VARCHAR(100) not null DEFAULT '' comment '标题',
+  `desc` VARCHAR(200) not null DEFAULT '' comment '简介',
+  `img_url` VARCHAR(200) not null DEFAULT '' comment '新闻图片url',
+  `content` text not null DEFAULT '' comment '内容',
+  `tags` VARCHAR(100) not null DEFAULT '' comment '标签',
+  `author` VARCHAR(100) not null DEFAULT '' comment '发布者',
+  PRIMARY KEY (`id`),
+  index `idx_menu_id`(`menu_id`)
+)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '新闻表';
+
