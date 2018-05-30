@@ -232,5 +232,32 @@ class Tools extends CI_Controller{
         }
         echo "file content is empty!";
     }
+    /*
+     * 根据parks.csv生成levels配置文件
+     * 
+     */
+    public function genLevelsFromCsv(){
+        $contents = file_get_contents($this->file);
+        if($contents){
+            $data = array();
+            $lines = explode("\n", $contents);
+            foreach($lines as $line){
+                $arr = explode(',', $line);
+                if(count($arr) >= 7){
+                    if($arr[2]){
+                        $data[$arr[2]] = '';
+                    }
+                }
+            }
+            $data = array_keys($data);
+
+            $config = '<?php'.PHP_EOL.' $levels=array('.PHP_EOL;
+            foreach($data as $i=>$name){
+                $config .= "$i=>'$name',\n";
+            }
+            $config .= ');'.PHP_EOL.'?>';
+            file_put_contents(__DIR__."/../config/levels.php", $config);
+        }
+    }
 
 }
