@@ -30,7 +30,14 @@ class News extends CI_Controller
         $this->model_news->pagination( TRUE );
 		$data_info = $this->model_news->lister( $page );
         $fields = $this->model_news->fields( TRUE );
-        
+
+		//栏目
+		$this->load->model('model_menus');
+		$menus = $this->model_menus->getMenusMap();
+		foreach($data_info as &$item){
+			$mid = $item['menu_id'];
+			$item['menu_id'] = isset($menus[$mid]) ? $menus[$mid] : '无';
+		}
 
         $this->template->assign( 'pager', $this->model_news->pager );
 		$this->template->assign( 'news_fields', $fields );
@@ -50,8 +57,11 @@ class News extends CI_Controller
     {
 		$data = $this->model_news->get( $id );
         $fields = $this->model_news->fields( TRUE );
-        
 
+		//栏目
+		$this->load->model('model_menus');
+		$menus = $this->model_menus->getMenusMap();
+		$data['menu_id'] = isset($menus[$data['menu_id']]) ? $menus[$data['menu_id']] : '无';
         
         $this->template->assign( 'id', $id );
 		$this->template->assign( 'news_fields', $fields );
@@ -74,8 +84,11 @@ class News extends CI_Controller
         {
             case 'GET':
                 $fields = $this->model_news->fields();
-                
-                
+
+				//栏目
+				$this->load->model('model_menus');
+				$menus = $this->model_menus->getMenusMap();
+				$this->template->assign('menus', $menus);
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'news_fields', $fields );
@@ -94,7 +107,6 @@ class News extends CI_Controller
                 /* we set the rules */
                 /* don't forget to edit these */
 				$this->form_validation->set_rules( 'menu_id', lang('menu_id'), 'required|max_length[11]|integer' );
-				$this->form_validation->set_rules( 'pub_time', lang('pub_time'), 'required' );
 				$this->form_validation->set_rules( 'title', lang('title'), 'required|max_length[100]' );
 				$this->form_validation->set_rules( 'desc', lang('desc'), 'required|max_length[200]' );
 				$this->form_validation->set_rules( 'img_url', lang('img_url'), 'required|max_length[200]' );
@@ -103,7 +115,6 @@ class News extends CI_Controller
 				$this->form_validation->set_rules( 'author', lang('author'), 'required|max_length[100]' );
 
 				$data_post['menu_id'] = $this->input->post( 'menu_id' );
-				$data_post['pub_time'] = $this->input->post( 'pub_time' );
 				$data_post['title'] = $this->input->post( 'title' );
 				$data_post['desc'] = $this->input->post( 'desc' );
 				$data_post['img_url'] = $this->input->post( 'img_url' );
@@ -153,8 +164,11 @@ class News extends CI_Controller
                 $this->model_news->raw_data = TRUE;
         		$data = $this->model_news->get( $id );
                 $fields = $this->model_news->fields();
-                
-                
+
+				//栏目
+				$this->load->model('model_menus');
+				$menus = $this->model_menus->getMenusMap();
+				$this->template->assign('menus', $menus);
                 
                 
           		$this->template->assign( 'action_mode', 'edit' );
@@ -173,7 +187,6 @@ class News extends CI_Controller
                 /* we set the rules */
                 /* don't forget to edit these */
 				$this->form_validation->set_rules( 'menu_id', lang('menu_id'), 'required|max_length[11]|integer' );
-				$this->form_validation->set_rules( 'pub_time', lang('pub_time'), 'required' );
 				$this->form_validation->set_rules( 'title', lang('title'), 'required|max_length[100]' );
 				$this->form_validation->set_rules( 'desc', lang('desc'), 'required|max_length[200]' );
 				$this->form_validation->set_rules( 'img_url', lang('img_url'), 'required|max_length[200]' );
@@ -182,7 +195,6 @@ class News extends CI_Controller
 				$this->form_validation->set_rules( 'author', lang('author'), 'required|max_length[100]' );
 
 				$data_post['menu_id'] = $this->input->post( 'menu_id' );
-				$data_post['pub_time'] = $this->input->post( 'pub_time' );
 				$data_post['title'] = $this->input->post( 'title' );
 				$data_post['desc'] = $this->input->post( 'desc' );
 				$data_post['img_url'] = $this->input->post( 'img_url' );

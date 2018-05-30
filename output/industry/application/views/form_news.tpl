@@ -28,15 +28,11 @@
     	<div class="group">
             <label class="label">{$news_fields.menu_id}<span class="error">*</span></label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($news_data)}{$news_data.menu_id}{/if}" name="menu_id" />
-    		</div>
-    		
-    	</div>
-    
-    	<div class="group">
-            <label class="label">{$news_fields.pub_time}<span class="error">*</span></label>
-    		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($news_data)}{$news_data.pub_time}{/if}" name="pub_time" />
+                {if isset($news_data)}
+                {html_options name=menu_id options=$menus selected=$news_data.menu_id}
+                {else}
+                {html_options name=menu_id options=$menus selected=0}
+                {/if}
     		</div>
     		
     	</div>

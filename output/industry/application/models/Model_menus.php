@@ -24,6 +24,16 @@ class Model_menus extends CI_Model
         $this->raw_data = FALSE;  
     }
 
+    public function getMenusMap(){
+        $data = $this->db->get('menus')->result_array();
+        $map = array();
+        $map[0] = '无';
+        foreach($data as $item){
+            $map[$item['id']] = $item['name'];
+        }
+        return $map;
+    }
+
 	function get ( $id, $get_one = false )
 	{
         
