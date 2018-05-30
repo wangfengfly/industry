@@ -252,7 +252,7 @@ class Tools extends CI_Controller{
             }
             $data = array_keys($data);
 
-            $config = '<?php'.PHP_EOL.' $levels=array('.PHP_EOL;
+            $config = '<?php'.PHP_EOL.' $config[\'levels\']=array('.PHP_EOL;
             foreach($data as $i=>$name){
                 $config .= "$i=>'$name',\n";
             }

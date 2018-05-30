@@ -1,5 +1,5 @@
 <?php
- $levels=array(
+ $config['levels']=array(
 0=>'无',
 1=>'国家经济技术开发区',
 2=>'国家级高新区',
