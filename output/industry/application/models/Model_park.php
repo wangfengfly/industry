@@ -59,7 +59,7 @@ class Model_park extends CI_Model
 	function get ( $id, $get_one = false )
 	{
         
-	    $select_statement = ( $this->raw_data ) ? 'id,level_id,prov_id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies' : 'id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies';
+	    $select_statement = ( $this->raw_data ) ? 'id,level_id,prov_id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies' : 'id,level_id,prov_id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies';
 		$this->db->select( $select_statement );
 		$this->db->from('park');
         

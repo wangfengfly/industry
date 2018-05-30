@@ -2,6 +2,8 @@
 
 class Park extends CI_Controller 
 {
+	private $levels;
+
 	function __construct()
 	{
 		parent::__construct();
@@ -18,6 +20,9 @@ class Park extends CI_Controller
         $this->template->assign( 'logged_in', $this->logged_in );
 
 		$this->lang->load( 'db_fields', 'english' ); // This is the language file
+
+		$this->config->load('levels');
+		$this->levels = $this->config->item('levels');
 	}
 
 
@@ -30,7 +35,12 @@ class Park extends CI_Controller
         $this->model_park->pagination( TRUE );
 		$data_info = $this->model_park->lister( $page );
         $fields = $this->model_park->fields( TRUE );
-        
+
+        $levels = $this->levels;
+		foreach($data_info as &$item){
+			$level_id = $item['level_id'];
+			$item['level_id'] = $levels[$level_id];
+		}
 
         $this->template->assign( 'pager', $this->model_park->pager );
 		$this->template->assign( 'park_fields', $fields );
@@ -51,7 +61,7 @@ class Park extends CI_Controller
 		$data = $this->model_park->get( $id );
         $fields = $this->model_park->fields( TRUE );
         
-
+		$data['level_id'] = $this->levels[$data['level_id']];
         
         $this->template->assign( 'id', $id );
 		$this->template->assign( 'park_fields', $fields );
@@ -75,7 +85,7 @@ class Park extends CI_Controller
             case 'GET':
                 $fields = $this->model_park->fields();
                 
-                
+                $this->template->assign('levels', $this->levels);
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'park_fields', $fields );
@@ -173,7 +183,7 @@ class Park extends CI_Controller
                 $fields = $this->model_park->fields();
                 
                 
-                
+                $this->template->assign('levels', $this->levels);
                 
           		$this->template->assign( 'action_mode', 'edit' );
         		$this->template->assign( 'park_data', $data );
