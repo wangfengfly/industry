@@ -65,6 +65,14 @@
                             <td>{$park_fields.companies}:</td>
                             <td>{$park_data.companies}</td>
                         </tr>
+                            <tr class="{cycle values='odd,even'}">
+                                <td>{$park_fields.level_id}:</td>
+                                <td>{$park_data.level_id}</td>
+                            </tr>
+                            <tr class="{cycle values='odd,even'}">
+                                <td>{$park_fields.prov_id}:</td>
+                                <td>{$park_data.prov_id}</td>
+                            </tr>
 						</table>
                         <div class="actions-bar wat-cf">
                             <div class="actions">

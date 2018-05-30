@@ -91,6 +91,8 @@ $lang2['park']['phone'] = '联系电话';
 $lang2['park']['email'] = '邮箱';
 $lang2['park']['wechat'] = '微信公众号';
 $lang2['park']['companies'] = '园区企业';
+$lang2['park']['level_id'] = '级别';
+$lang2['park']['prov_id'] = '地区';
 
 
 /*************************

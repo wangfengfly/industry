@@ -144,6 +144,19 @@
     		</div>
     		
     	</div>
+							<div class="group">
+								<label class="label">{$park_fields.level_id}<span class="error">*</span></label>
+								<div>
+									<input class="text_field" type="text" maxlength="255" value="{if isset($park_data)}{$park_data.level_id}{/if}" name="level_id" />
+								</div>
+							</div>
+
+							<div class="group">
+								<label class="label">{$park_fields.prov_id}<span class="error">*</span></label>
+								<div>
+									<input class="text_field" type="text" maxlength="255" value="{if isset($park_data)}{$park_data.prov_id}{/if}" name="prov_id" />
+								</div>
+							</div>
     
 
                             <div class="group navform wat-cf">

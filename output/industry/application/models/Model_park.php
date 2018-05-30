@@ -59,7 +59,7 @@ class Model_park extends CI_Model
 	function get ( $id, $get_one = false )
 	{
         
-	    $select_statement = ( $this->raw_data ) ? 'id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies' : 'id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies';
+	    $select_statement = ( $this->raw_data ) ? 'id,level_id,prov_id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies' : 'id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies';
 		$this->db->select( $select_statement );
 		$this->db->from('park');
         
@@ -97,6 +97,8 @@ class Model_park extends CI_Model
 	'email' => $row['email'],
 	'wechat' => $row['wechat'],
 	'companies' => $row['companies'],
+					'level_id' => $row['level_id'],
+					'prov_id' => $row['prov_id'],
  );
 		}
         else
@@ -143,7 +145,7 @@ class Model_park extends CI_Model
 	{
         
 	    $this->db->start_cache();
-		$this->db->select( 'id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies');
+		$this->db->select( 'id,level_id,prov_id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies');
 		$this->db->from( 'park' );
 		//$this->db->order_by( '', 'ASC' );
         
@@ -193,6 +195,8 @@ class Model_park extends CI_Model
 	'email' => $row['email'],
 	'wechat' => $row['wechat'],
 	'companies' => $row['companies'],
+	'level_id' => $row['level_id'],
+	'prov_id' => $row['prov_id'],
  );
 		}
         $this->db->flush_cache(); 
@@ -205,7 +209,7 @@ class Model_park extends CI_Model
 	{
 	    $meta = $this->metadata();
 	    $this->db->start_cache();
-		$this->db->select( 'id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies');
+		$this->db->select( 'id,level_id,prov_id,identifier,code,name,create_time,area,prime_ind1,prime_ind2,prime_ind3,prime_ind4,intro,url,phone,email,wechat,companies');
 		$this->db->from( 'park' );
         
 
@@ -260,6 +264,8 @@ class Model_park extends CI_Model
 	'email' => $row['email'],
 	'wechat' => $row['wechat'],
 	'companies' => $row['companies'],
+	'level_id' => $row['level_id'],
+	'prov_id' => $row['prov_id'],
  );
 		}
         $this->db->flush_cache(); 
@@ -291,7 +297,9 @@ class Model_park extends CI_Model
 	'phone' => lang('phone'),
 	'email' => lang('email'),
 	'wechat' => lang('wechat'),
-	'companies' => lang('companies')
+	'companies' => lang('companies'),
+	'level_id' => lang('level_id'),
+	'prov_id' => lang('prov_id'),
 );
 
         if( $withID == FALSE )

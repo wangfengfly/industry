@@ -32,6 +32,8 @@
 			<th>{$park_fields.email}</th>
 			<th>{$park_fields.wechat}</th>
 			<th>{$park_fields.companies}</th>
+            <th>{$park_fields.level_id}</th>
+            <th>{$park_fields.prov_id}</th>
 
                                     <th width="80">Actions</th>
                             	</thead>
@@ -55,6 +57,8 @@
 				<td>{$row.email}</td>
 				<td>{$row.wechat}</td>
 				<td>{$row.companies}</td>
+                <td>{$row.level_id}</td>
+                <td>{$row.prov_id}</td>
 
                                             <td width="80">
                                                 <a href="park/show/{$row.id}"><img src="iscaffold/images/view.png" alt="Show record" /></a>

@@ -108,6 +108,8 @@ class Park extends CI_Controller
 				$this->form_validation->set_rules( 'email', lang('email'), 'required|max_length[20]' );
 				$this->form_validation->set_rules( 'wechat', lang('wechat'), 'required|max_length[50]' );
 				$this->form_validation->set_rules( 'companies', lang('companies'), 'required|max_length[500]' );
+				$this->form_validation->set_rules( 'level_id', lang('level_id'), 'required|max_length[2]|integer' );
+				$this->form_validation->set_rules( 'prov_id', lang('prov_id'), 'required|max_length[2]|integer' );
 
 				$data_post['identifier'] = $this->input->post( 'identifier' );
 				$data_post['code'] = $this->input->post( 'code' );
@@ -124,6 +126,8 @@ class Park extends CI_Controller
 				$data_post['email'] = $this->input->post( 'email' );
 				$data_post['wechat'] = $this->input->post( 'wechat' );
 				$data_post['companies'] = $this->input->post( 'companies' );
+				$data_post['level_id'] = $this->input->post('level_id');
+				$data_post['prov_id'] = $this->input->post('prov_id');
 
                 if ( $this->form_validation->run() == FALSE )
                 {
@@ -201,6 +205,9 @@ class Park extends CI_Controller
 				$this->form_validation->set_rules( 'email', lang('email'), 'required|max_length[20]' );
 				$this->form_validation->set_rules( 'wechat', lang('wechat'), 'required|max_length[50]' );
 				$this->form_validation->set_rules( 'companies', lang('companies'), 'required|max_length[500]' );
+				$this->form_validation->set_rules( 'level_id', lang('level_id'), 'required|max_length[2]|integer' );
+				$this->form_validation->set_rules( 'prov_id', lang('prov_id'), 'required|max_length[2]|integer' );
+
 
 				$data_post['identifier'] = $this->input->post( 'identifier' );
 				$data_post['code'] = $this->input->post( 'code' );
@@ -217,6 +224,8 @@ class Park extends CI_Controller
 				$data_post['email'] = $this->input->post( 'email' );
 				$data_post['wechat'] = $this->input->post( 'wechat' );
 				$data_post['companies'] = $this->input->post( 'companies' );
+				$data_post['level_id'] = $this->input->post('level_id');
+				$data_post['prov_id'] = $this->input->post('prov_id');
 
                 if ( $this->form_validation->run() == FALSE )
                 {
