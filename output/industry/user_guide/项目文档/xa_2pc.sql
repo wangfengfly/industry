@@ -49,24 +49,28 @@ CREATE TABLE `projects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='项目'
 
 CREATE TABLE `park` (
-  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `identifier` int(11) unsigned not null DEFAULT 0 comment '编号',
-  `code` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '代码',
-  `name` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '园区名称',
-  `create_time` int(11) UNSIGNED not null DEFAULT 0 comment '建立时间',
-  `area` float unsigned not null DEFAULT 0 comment '占地面积,公顷',
-  `prime_ind1` VARCHAR(20) not null DEFAULT '' comment '主导产业1',
-  `prime_ind2` VARCHAR(20) not null DEFAULT '' comment '主导产业2',
-  `prime_ind3` VARCHAR(20) not null DEFAULT '' comment '主导产业3',
-  `prime_ind4` VARCHAR(20) not null DEFAULT '' comment '主导产业4',
-  `intro` text not null DEFAULT '' comment '园区简介',
-  `url` VARCHAR(100) not NULL DEFAULT '' comment '园区官网',
-  `phone` VARCHAR(20) not NULL DEFAULT '' comment '联系电话',
-  `email` VARCHAR(20) not null DEFAULT '' comment '邮箱',
-  `wechat` VARCHAR(50) not null DEFAULT ''comment '微信公众号',
-  `companies` VARCHAR(500) not null DEFAULT '' comment '园区企业',
-  PRIMARY KEY (`id`)
-)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COMMENT = '园区表';
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `identifier` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '编号',
+  `code` varchar(20) NOT NULL DEFAULT '' COMMENT '代码',
+  `name` varchar(200) NOT NULL DEFAULT '' COMMENT '园区名称',
+  `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '建立时间',
+  `area` float unsigned NOT NULL DEFAULT '0' COMMENT '占地面积,公顷',
+  `prime_ind1` varchar(20) NOT NULL DEFAULT '' COMMENT '主导产业1',
+  `prime_ind2` varchar(20) NOT NULL DEFAULT '' COMMENT '主导产业2',
+  `prime_ind3` varchar(20) NOT NULL DEFAULT '' COMMENT '主导产业3',
+  `prime_ind4` varchar(20) NOT NULL DEFAULT '' COMMENT '主导产业4',
+  `intro` text NOT NULL COMMENT '园区简介',
+  `url` varchar(100) NOT NULL DEFAULT '' COMMENT '园区官网',
+  `phone` varchar(20) NOT NULL DEFAULT '' COMMENT '联系电话',
+  `email` varchar(20) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `wechat` varchar(50) NOT NULL DEFAULT '' COMMENT '微信公众号',
+  `companies` varchar(500) NOT NULL DEFAULT '' COMMENT '园区企业',
+  `level_id` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '级别',
+  `prov_id` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '省份地区',
+  PRIMARY KEY (`id`),
+  KEY `idx_level_id` (`level_id`),
+  KEY `idx_prov_id` (`prov_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='园区表';
 
 CREATE TABLE `economy` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
