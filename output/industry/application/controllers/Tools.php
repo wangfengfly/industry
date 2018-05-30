@@ -240,6 +240,7 @@ class Tools extends CI_Controller{
         $contents = file_get_contents($this->file);
         if($contents){
             $data = array();
+            $data['无'] = '';
             $lines = explode("\n", $contents);
             foreach($lines as $line){
                 $arr = explode(',', $line);
