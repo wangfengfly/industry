@@ -201,12 +201,16 @@ class Tools extends CI_Controller{
         if($contents){
             $this->load->model('model_park');
             $contents = explode("\n", $contents);
+            $this->config->load('levels');
+            $levels = $this->config->item('levels');
+            $levels = array_flip($levels);
+
             foreach($contents as $line){
                 $attrs = explode(',', $line);
-                if(count($attrs) == 6){
+                if(count($attrs) >= 7){
                     if(is_numeric($attrs[0])){
-                        $create_time = str_replace('.', '', $attrs[3]);
-                        $prime_inds = explode('、', $attrs[5]);
+                        $create_time = str_replace('.', '', $attrs[4]);
+                        $prime_inds = explode('、', $attrs[6]);
                         $tmp = array();
                         for($i=0; $i<4; $i++){
                             if(isset($prime_inds[$i])){
@@ -214,8 +218,10 @@ class Tools extends CI_Controller{
                                 $tmp['prime_ind'.$j] = $prime_inds[$i];
                             }
                         }
-                        $data = array('identifier'=>$attrs[0], 'code'=>$attrs[1], 'name'=>$attrs[2],
-                            'create_time'=>$create_time, 'area'=>$attrs[4]);
+                        $level_id = isset($levels[$attrs[2]]) ? $levels[$attrs[2]] : 0;
+                        $data = array('identifier'=>$attrs[0], 'code'=>$attrs[1],
+                            'level_id'=>$level_id, 'name'=>$attrs[3],
+                            'create_time'=>$create_time, 'area'=>$attrs[5]);
                         if($tmp){
                             $data = array_merge($data, $tmp);
                         }
