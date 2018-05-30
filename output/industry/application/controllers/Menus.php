@@ -95,11 +95,9 @@ class Menus extends CI_Controller
                 /* don't forget to edit these */
 				$this->form_validation->set_rules( 'seq', lang('seq'), 'required|max_length[2]|integer' );
 				$this->form_validation->set_rules( 'name', lang('name'), 'required|max_length[100]' );
-				$this->form_validation->set_rules( 'ctime', lang('ctime'), 'required' );
 
 				$data_post['seq'] = $this->input->post( 'seq' );
 				$data_post['name'] = $this->input->post( 'name' );
-				$data_post['ctime'] = $this->input->post( 'ctime' );
 
                 if ( $this->form_validation->run() == FALSE )
                 {
@@ -164,11 +162,9 @@ class Menus extends CI_Controller
                 /* don't forget to edit these */
 				$this->form_validation->set_rules( 'seq', lang('seq'), 'required|max_length[2]|integer' );
 				$this->form_validation->set_rules( 'name', lang('name'), 'required|max_length[100]' );
-				$this->form_validation->set_rules( 'ctime', lang('ctime'), 'required' );
 
 				$data_post['seq'] = $this->input->post( 'seq' );
 				$data_post['name'] = $this->input->post( 'name' );
-				$data_post['ctime'] = $this->input->post( 'ctime' );
 
                 if ( $this->form_validation->run() == FALSE )
                 {

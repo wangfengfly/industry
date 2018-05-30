@@ -65,11 +65,11 @@ $lang2['news']['id'] = 'id';
 $lang2['news']['menu_id'] = '栏目';
 $lang2['news']['pub_time'] = '发布时间';
 $lang2['news']['title'] = '标题';
-$lang2['news']['desc'] = '';
-$lang2['news']['img_url'] = '';
+$lang2['news']['desc'] = '简介';
+$lang2['news']['img_url'] = '封面图url';
 $lang2['news']['content'] = '内容';
 $lang2['news']['tags'] = '关键词';
-$lang2['news']['author'] = '';
+$lang2['news']['author'] = '发布者';
 
 
 /*************************

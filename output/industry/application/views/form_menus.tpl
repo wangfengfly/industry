@@ -41,14 +41,6 @@
     		
     	</div>
     
-    	<div class="group">
-            <label class="label">{$menus_fields.ctime}<span class="error">*</span></label>
-    		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($menus_data)}{$menus_data.ctime}{/if}" name="ctime" />
-    		</div>
-    		
-    	</div>
-    
 
                             <div class="group navform wat-cf">
                                     <button class="button" type="submit">
