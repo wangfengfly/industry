@@ -3,6 +3,7 @@
 class Park extends CI_Controller 
 {
 	private $levels;
+	private $provs;
 
 	function __construct()
 	{
@@ -15,6 +16,7 @@ class Park extends CI_Controller
 		$this->load->helper( 'language' ); 
 		$this->load->helper( 'url' );
         $this->load->model( 'model_auth' );
+		$this->load->model('model_province');
 
         $this->logged_in = $this->model_auth->check( TRUE );
         $this->template->assign( 'logged_in', $this->logged_in );
@@ -23,6 +25,7 @@ class Park extends CI_Controller
 
 		$this->config->load('levels');
 		$this->levels = $this->config->item('levels');
+		$this->provs = $this->model_province->getall2name();
 	}
 
 
@@ -36,10 +39,13 @@ class Park extends CI_Controller
 		$data_info = $this->model_park->lister( $page );
         $fields = $this->model_park->fields( TRUE );
 
+		$provs = $this->provs;
         $levels = $this->levels;
 		foreach($data_info as &$item){
 			$level_id = $item['level_id'];
 			$item['level_id'] = $levels[$level_id];
+			$prov_id = $item['prov_id'];
+			$item['prov_id'] = $provs[$prov_id];
 		}
 
         $this->template->assign( 'pager', $this->model_park->pager );
@@ -62,6 +68,7 @@ class Park extends CI_Controller
         $fields = $this->model_park->fields( TRUE );
         
 		$data['level_id'] = $this->levels[$data['level_id']];
+		$data['prov_id'] = $this->provs[$data['prov_id']];
         
         $this->template->assign( 'id', $id );
 		$this->template->assign( 'park_fields', $fields );
@@ -86,6 +93,7 @@ class Park extends CI_Controller
                 $fields = $this->model_park->fields();
                 
                 $this->template->assign('levels', $this->levels);
+				$this->template->assign('provs', $this->provs);
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'park_fields', $fields );
@@ -182,7 +190,7 @@ class Park extends CI_Controller
         		$data = $this->model_park->get( $id );
                 $fields = $this->model_park->fields();
                 
-                
+                $this->template->assign('provs', $this->provs);
                 $this->template->assign('levels', $this->levels);
                 
           		$this->template->assign( 'action_mode', 'edit' );
