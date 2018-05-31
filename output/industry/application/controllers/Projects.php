@@ -122,7 +122,7 @@ class Projects extends CI_Controller
                 $this->template->assign( 'metadata', $this->model_projects->metadata() );
         		$this->template->assign( 'table_name', 'Projects' );
         		$this->template->assign( 'template', 'form_projects' );
-        		$this->template->display( 'frame_admin.tpl' );
+        		$this->template->display( 'frame_admin_new.tpl' );
             break;
 
             /**
@@ -179,7 +179,7 @@ class Projects extends CI_Controller
                     $this->template->assign( 'metadata', $this->model_projects->metadata() );
             		$this->template->assign( 'table_name', 'Projects' );
             		$this->template->assign( 'template', 'form_projects' );
-            		$this->template->display( 'frame_admin.tpl' );
+            		$this->template->display( 'frame_admin_new.tpl' );
                 }
                 elseif ( $this->form_validation->run() == TRUE )
                 {
@@ -229,7 +229,7 @@ class Projects extends CI_Controller
         		$this->template->assign( 'table_name', 'Projects' );
         		$this->template->assign( 'template', 'form_projects' );
         		$this->template->assign( 'record_id', $id );
-        		$this->template->display( 'frame_admin.tpl' );
+        		$this->template->display( 'frame_admin_new.tpl' );
             break;
     
             case 'POST':
@@ -284,7 +284,7 @@ class Projects extends CI_Controller
             		$this->template->assign( 'table_name', 'Projects' );
             		$this->template->assign( 'template', 'form_projects' );
         		    $this->template->assign( 'record_id', $id );
-            		$this->template->display( 'frame_admin.tpl' );
+            		$this->template->display( 'frame_admin_new.tpl' );
                 }
                 elseif ( $this->form_validation->run() == TRUE )
                 {

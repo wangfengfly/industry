@@ -14,4 +14,19 @@ class Api extends CI_Controller{
         echo json_encode($data);
     }
 
+    public function getCities(){
+        $prov_id = intval($this->input->get('prov_id'));
+        if($prov_id == 0){
+            echo json_encode(array('全国'=>0));
+            exit;
+        }
+        $this->load->model('model_city');
+        $cities = $this->model_city->getCities($prov_id);
+        $map = array();
+        foreach($cities as $city){
+            $map[$city['name']] = $city['id'];
+        }
+        echo json_encode($map);
+    }
+
 }

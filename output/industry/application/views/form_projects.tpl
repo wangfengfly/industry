@@ -69,9 +69,9 @@
             <label class="label">{$projects_fields.jsdd1}<span class="error">*</span></label>
     		<div>
 				{if isset($projects_data)}
-					{html_options name=jsdd1 options=$jsdd1_options selected=$projects_data.jsdd1}
+					{html_options name=jsdd1 options=$jsdd1_options selected=$projects_data.jsdd1 id='jsdd1'}
 				{else}
-					{html_options name=jsdd1 options=$jsdd1_options selected=0}
+					{html_options name=jsdd1 options=$jsdd1_options selected=0 id='jsdd1'}
 				{/if}
     		</div>
     		
@@ -81,9 +81,9 @@
 			<label class="label">{$projects_fields.jsdd2}<span class="error">*</span></label>
 			<div>
 				{if isset($projects_data)}
-					{html_options name=jsdd2 options=$jsdd2_options selected=$projects_data.jsdd2}
+					{html_options name=jsdd2 options=$jsdd2_options selected=$projects_data.jsdd2 id='jsdd2'}
 				{else}
-					{html_options name=jsdd2 options=$jsdd2_options selected=0}
+					{html_options name=jsdd2 options=$jsdd2_options selected=0 id='jsdd2'}
 				{/if}
 			</div>
 
@@ -191,6 +191,20 @@
 		var ue = UE.getEditor('jsnr', {
 			initialFrameHeight:600,//设置编辑器高度
 			scaleEnabled:true
+		});
+
+		//省市下拉框联动
+		$('#jsdd1').on('change', function(){
+			var prov_id = this.value;
+			$.get("/api/getCities/?prov_id="+prov_id, function(data) {
+				var $jsdd2 = $('#jsdd2');
+				$jsdd2.empty();
+				data = $.parseJSON(data);
+				$.each(data, function(key, value) {
+					$jsdd2.append($("<option></option>")
+							.attr("value", value).text(key));
+				});
+			});
 		});
 	</script>
             </div><!-- .block -->

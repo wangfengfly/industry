@@ -44,6 +44,14 @@ class Model_city extends CI_Model
         return $data;
     }
 
+    public function getCities($prov_id){
+        $this->db->from('city');
+        $this->db->where('pid', $prov_id);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
 	function get ( $id, $get_one = false )
 	{
         
