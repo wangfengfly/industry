@@ -53,13 +53,13 @@
                 <div class="block">
                   <h3>Navigation</h3>
                   <ul class="navigation">
-                    <ul id="top_menu">						<li{if isset($table_name)}{if $table_name == 'City'} class='active'{/if}{/if}><a href='city'>City</a></li>
-						<li{if isset($table_name)}{if $table_name == 'Economy'} class='active'{/if}{/if}><a href='economy'>Economy</a></li>
-						<li{if isset($table_name)}{if $table_name == 'Industry'} class='active'{/if}{/if}><a href='industry'>Industry</a></li>
-						<li{if isset($table_name)}{if $table_name == 'Park'} class='active'{/if}{/if}><a href='park'>Park</a></li>
-						<li{if isset($table_name)}{if $table_name == 'Policy'} class='active'{/if}{/if}><a href='policy'>Policy</a></li>
-						<li{if isset($table_name)}{if $table_name == 'Projects'} class='active'{/if}{/if}><a href='projects'>Projects</a></li>
-						<li{if isset($table_name)}{if $table_name == 'Province'} class='active'{/if}{/if}><a href='province'>Province</a></li>
+                    <ul id="top_menu">						<li{if isset($table_name)}{if $table_name == 'City'} class='active'{/if}{/if}><a href='city'>市</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Economy'} class='active'{/if}{/if}><a href='economy'>经济指标</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Industry'} class='active'{/if}{/if}><a href='industry'>行业</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Park'} class='active'{/if}{/if}><a href='park'>园区</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Policy'} class='active'{/if}{/if}><a href='policy'>政策</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Projects'} class='active'{/if}{/if}><a href='projects'>项目</a></li>
+						<li{if isset($table_name)}{if $table_name == 'Province'} class='active'{/if}{/if}><a href='province'>省</a></li>
 					</ul>
                   </ul>
                 </div>
